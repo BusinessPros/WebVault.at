@@ -82,11 +82,9 @@ public class AnfragePageModel(IWebHostEnvironment environment, ILogger<AnfragePa
     {
         return paket?.Trim().ToLowerInvariant() switch
         {
-            "abo" or "pro" or "abo-pro" or "starter" or "business" or "business-ki" => "abo",
-            "ki" or "chatbot" or "ki-chatbot" => "chatbot",
-            "fixpreis" or "fixpreis-website" => "fixpreis",
-            "custom" or "custom-projekt" => "custom",
-            "beratung" or "unsicher" => "beratung",
+            "abo" or "pro" or "abo-pro" => "abo",
+            "starter" or "fixpreis" or "fixpreis-website" => "fixpreis",
+            "business" or "beratung" or "unsicher" or "custom" => "beratung",
             _ => string.Empty
         };
     }

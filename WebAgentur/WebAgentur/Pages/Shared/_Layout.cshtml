@@ -1,36 +1,11 @@
-@{
-    var pageTitle = Convert.ToString(ViewData["Title"]);
-    var title = string.IsNullOrWhiteSpace(pageTitle)
-        ? "Moderne Websites für lokale Unternehmen"
-        : pageTitle;
-    var fullTitle = title.Contains("[PROJEKTNAME]", StringComparison.OrdinalIgnoreCase)
-        ? title
-        : $"{title} | [PROJEKTNAME]";
-    var description = Convert.ToString(ViewData["Description"]);
-    if (string.IsNullOrWhiteSpace(description))
-    {
-        description = "Websites, Hosting-Einrichtung, laufende Betreuung und KI-Chatbots für lokale Unternehmen, Restaurants, Vereine und Dienstleister.";
-    }
-
-    var bodyClass = Convert.ToString(ViewData["BodyClass"]);
-    var request = Context.Request;
-    var canonical = $"{request.Scheme}://{request.Host}{request.PathBase}{request.Path}";
-}
 <!DOCTYPE html>
 <html lang="de" data-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0a0a" />
-    <meta name="robots" content="index,follow" />
-    <meta name="description" content="@description" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_AT" />
-    <meta property="og:title" content="@fullTitle" />
-    <meta property="og:description" content="@description" />
-    <meta property="og:url" content="@canonical" />
-    <title>@fullTitle</title>
-    <link rel="canonical" href="@canonical" />
+    <meta name="description" data-i18n-content="meta.description" content="Professionelle Webagentur aus Österreich für Websites, Hosting, KI-Integrationen und digitale Lösungen." />
+    <title data-i18n-title="@ViewData["TitleKey"]">@ViewData["Title"] - [AGENTUR_NAME]</title>
 
     <script>
         (function () {
@@ -45,24 +20,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <script>
+        tailwind = {
+            config: {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            display: ["Inter", "system-ui", "sans-serif"],
+                            body: ["Inter", "system-ui", "sans-serif"],
+                            mono: ["JetBrains Mono", "monospace"]
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-<body class="@bodyClass">
+<body class="@ViewData["BodyClass"]">
     <header class="site-nav" id="site-nav">
-        <a class="brand" asp-page="/Index" aria-label="[PROJEKTNAME] Startseite">[PROJEKTNAME]</a>
+        <a class="brand" asp-page="/Index" aria-label="[AGENTUR_NAME] Startseite">[AGENTUR_NAME]</a>
 
-        <nav class="desktop-nav" aria-label="Hauptnavigation">
-            <a asp-page="/Leistungen">Leistungen</a>
-            <a asp-page="/Angebote">Preise</a>
-            <a asp-page="/Portfolio">Beispiele</a>
-            <a asp-page="/KiChatbots">KI-Chatbots</a>
-            <a asp-page="/Beratung">Beratung</a>
-            <a asp-page="/UeberUns">Über uns</a>
-            <a asp-page="/Kontakt">Kontakt</a>
+        <nav class="desktop-nav" aria-label="Hauptnavigation" data-i18n-aria="nav.mainLabel">
+            <a href="/#leistungen" data-i18n="nav.services">Leistungen</a>
+            <a href="/#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+            <a href="/#preise" data-i18n="nav.pricing">Preise</a>
+            <a href="/#ueber-uns" data-i18n="nav.about">Über uns</a>
+            <a href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
         </nav>
 
         <div class="nav-actions">
-            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Farbschema wechseln">
+            <div class="language-switcher" aria-label="Sprache wählen" data-i18n-aria="nav.languageLabel">
+                <button type="button" class="lang-option is-active" data-lang-switch="de" aria-pressed="true">DE</button>
+                <button type="button" class="lang-option" data-lang-switch="en" aria-pressed="false">EN</button>
+            </div>
+
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Light Mode aktivieren" data-i18n-aria="nav.themeToggle">
                 <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
                     <circle cx="12" cy="12" r="4"></circle>
                     <path d="M12 2v2"></path>
@@ -79,23 +74,21 @@
                 </svg>
             </button>
 
-            <a class="button button-small button-gold nav-cta" asp-page="/Kontakt">Kostenlos anfragen</a>
-            <button class="mobile-nav-toggle" type="button" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false" data-mobile-toggle>
+            <a class="button button-small button-gold nav-cta" asp-page="/Anfrage" data-i18n="nav.cta">Projekt anfragen</a>
+            <button class="mobile-nav-toggle" type="button" aria-label="Menü öffnen" data-i18n-aria="nav.menuOpen" aria-controls="mobile-menu" aria-expanded="false" data-mobile-toggle>
                 <span></span>
                 <span></span>
             </button>
         </div>
     </header>
 
-    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation" data-mobile-menu>
-        <a asp-page="/Leistungen">Leistungen</a>
-        <a asp-page="/Angebote">Preise</a>
-        <a asp-page="/Portfolio">Beispiele</a>
-        <a asp-page="/KiChatbots">KI-Chatbots</a>
-        <a asp-page="/Beratung">Beratung</a>
-        <a asp-page="/UeberUns">Über uns</a>
-        <a asp-page="/Kontakt">Kontakt</a>
-        <a class="button button-gold" asp-page="/Kontakt">Kostenlos anfragen</a>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation" data-i18n-aria="nav.mobileLabel" data-mobile-menu>
+        <a href="/#leistungen" data-i18n="nav.services">Leistungen</a>
+        <a href="/#portfolio" data-i18n="nav.portfolio">Portfolio</a>
+        <a href="/#preise" data-i18n="nav.pricing">Preise</a>
+        <a href="/#ueber-uns" data-i18n="nav.about">Über uns</a>
+        <a href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+        <a class="button button-gold" asp-page="/Anfrage" data-i18n="nav.cta">Projekt anfragen</a>
     </nav>
 
     <main>
@@ -105,35 +98,41 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <a class="brand" asp-page="/Index">[PROJEKTNAME]</a>
-                <p>Moderne Websites, Hosting-Einrichtung, laufende Betreuung und KI-Chatbots für lokale Unternehmen in [REGION].</p>
+                <a class="brand" asp-page="/Index">[AGENTUR_NAME]</a>
+                <p data-i18n="footer.description">Professionelle Websites, Hosting und digitale Lösungen für Unternehmen in Österreich und darüber hinaus.</p>
             </div>
 
-            <nav class="footer-links" aria-label="Leistungslinks">
-                <a asp-page="/Leistungen">Leistungen</a>
-                <a asp-page="/Angebote">Angebotsübersicht</a>
-                <a asp-page="/Portfolio">Beispiele</a>
-                <a asp-page="/KiChatbots">KI-Chatbots</a>
-                <a asp-page="/Beratung">Beratung</a>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <a asp-page="/Impressum" data-i18n="footer.imprint">Impressum</a>
+                <a asp-page="/Datenschutz" data-i18n="footer.privacy">Datenschutz</a>
+                <a href="/#kontakt" data-i18n="footer.contact">Kontakt</a>
             </nav>
 
-            <nav class="footer-links" aria-label="Kontakt und Rechtliches">
-                <a asp-page="/UeberUns">Über uns</a>
-                <a asp-page="/Kontakt">Kontakt</a>
-                <a asp-page="/Impressum">Impressum</a>
-                <a asp-page="/Datenschutz">Datenschutz</a>
-            </nav>
+            <div class="footer-socials" aria-label="Social Links">
+                <a href="#" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10v8"></path><path d="M7 7v.01"></path><path d="M11 18v-8"></path><path d="M11 13.5c0-2 1.2-3.5 3.2-3.5S18 11.4 18 14v4"></path></svg>
+                </a>
+                <a href="#" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.2-4-2-5.5-2.5"></path><path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.7 4.7 0 0 0-1.3-3.3 4.4 4.4 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.2 12.2 0 0 0-6.2 0C6.5 3.7 5.4 4 5.4 4a4.4 4.4 0 0 0-.1 3.2A4.7 4.7 0 0 0 4 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"></path></svg>
+                </a>
+            </div>
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 [PROJEKTNAME]. Alle Rechte vorbehalten.</p>
-            <p>Bernhard und Lukas · persönliche Weblösungen für lokale Betriebe.</p>
+            <p data-i18n="footer.copyright">© 2026 [AGENTUR_NAME]. Alle Rechte vorbehalten.</p>
+            <p data-i18n="footer.madeIn">Entwickelt in Österreich.</p>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="~/js/vendor/gsap.min.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="~/js/vendor/ScrollTrigger.min.js" asp-append-version="true"></script>
     <script src="~/js/splittext-lite.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="~/js/vendor/lenis.min.js" asp-append-version="true"></script>
     <script src="~/js/i18n-theme.js" asp-append-version="true"></script>
     <script src="~/js/animations.js" asp-append-version="true"></script>

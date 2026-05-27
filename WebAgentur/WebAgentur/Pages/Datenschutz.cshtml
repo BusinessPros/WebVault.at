@@ -1,30 +1,33 @@
-@page "/datenschutz"
+@page
 @{
     ViewData["Title"] = "Datenschutz";
-    ViewData["Description"] = "Datenschutz Platzhalter für [PROJEKTNAME].";
+    ViewData["TitleKey"] = "meta.privacyTitle";
 }
 
 <section class="legal-page">
     <div class="legal-content">
-        <p class="eyebrow">Rechtliches</p>
-        <h1>Datenschutz</h1>
+        <p class="eyebrow" data-i18n="legal.eyebrow">Rechtliches</p>
+        <h1 data-i18n="privacy.title">Datenschutz</h1>
 
         <div class="legal-card">
-            <h2>Platzhalter</h2>
-            <p>Die Datenschutzerklärung muss vor Veröffentlichung final geprüft und ergänzt werden.</p>
+            <h2 data-i18n="privacy.controller.title">Verantwortliche Stelle</h2>
+            <p>[AGENTUR_NAME], [STRASSE HAUSNUMMER], [PLZ ORT], Österreich.</p>
+            <p data-i18n="privacy.controller.contact">Kontakt: [EMAIL]</p>
         </div>
 
         <div class="legal-card">
-            <h2>Zu ergänzende Angaben</h2>
-            <p>[DATENSCHUTZ-KONTAKT]</p>
-            <p>[HOSTING-ANBIETER]</p>
-            <p>[FORMULAR-ANBIETER]</p>
-            <p>[KI-ANBIETER, FALLS VERWENDET]</p>
+            <h2 data-i18n="privacy.form.title">Anfrageformular</h2>
+            <p data-i18n="privacy.form.text">Wenn Sie das Anfrageformular nutzen, speichern wir Ihre Angaben, um Ihre Anfrage zu bearbeiten und Sie zu kontaktieren. Die Daten werden nicht verkauft und nicht für fremde Werbezwecke verwendet.</p>
         </div>
 
         <div class="legal-card">
-            <h2>Hinweis</h2>
-            <p>Diese Seite ist kein finaler Rechtstext. Rechtlich verbindliche Inhalte müssen vor Veröffentlichung durch die verantwortliche Person oder eine passende Fachstelle geprüft werden.</p>
+            <h2 data-i18n="privacy.retention.title">Speicherdauer</h2>
+            <p data-i18n="privacy.retention.text">Anfragedaten werden nur so lange gespeichert, wie es für Bearbeitung, Nachverfolgung oder rechtliche Dokumentation erforderlich ist.</p>
+        </div>
+
+        <div class="legal-card">
+            <h2 data-i18n="privacy.rights.title">Ihre Rechte</h2>
+            <p data-i18n="privacy.rights.text">Sie können Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung verlangen. Schreiben Sie dafür an [EMAIL].</p>
         </div>
     </div>
 </section>

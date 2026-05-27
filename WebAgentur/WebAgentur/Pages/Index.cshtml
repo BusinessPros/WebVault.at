@@ -1,237 +1,353 @@
 @page
 @model IndexModel
 @{
-    ViewData["Title"] = "Moderne Websites für lokale Unternehmen";
-    ViewData["Description"] = "Websites, Hosting-Einrichtung, laufende Betreuung und KI-Chatbots für lokale Unternehmen, Restaurants, Vereine und Dienstleister.";
+    ViewData["Title"] = "Webagentur für professionelle Websites";
+    ViewData["TitleKey"] = "meta.homeTitle";
 }
 
-<section class="home-hero" id="start">
+<section class="hero-section" id="start">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="grain-overlay" aria-hidden="true"></div>
 
-    <div class="home-hero-inner">
-        <div class="hero-copy">
-            <p class="eyebrow hero-reveal">Webdesign · Hosting-Einrichtung · KI · Betreuung</p>
-            <h1 class="hero-title" data-hero-title>
-                <span class="hero-line">Moderne Websites für lokale Unternehmen</span>
-                <span class="hero-line">— komplett betreut.</span>
-            </h1>
-            <p class="hero-subtext hero-reveal">Wir erstellen individuelle Websites inklusive Design, technischer Umsetzung, Hosting-Einrichtung und laufender Betreuung. Auf Wunsch auch mit KI-Chatbot.</p>
-
-            <div class="hero-actions hero-reveal">
-                <a class="button button-gold button-large" asp-page="/Kontakt">Kostenlos anfragen</a>
-                <a class="button button-ghost button-large" asp-page="/Angebote">Angebote ansehen</a>
-                <a class="button button-ghost button-large" asp-page="/Portfolio">Beispiele ansehen</a>
-            </div>
-
-            <div class="hero-badges hero-reveal" aria-label="Kurzüberblick">
-                <span>Design & Umsetzung</span>
-                <span>Hosting-Einrichtung</span>
-                <span>Monatliche Betreuung</span>
-                <span>Optional KI-Chatbot</span>
-            </div>
+    <div class="hero-content">
+        <p class="eyebrow hero-reveal" data-i18n="home.hero.eyebrow">Webdesign · Hosting · KI · Betreuung</p>
+        <h1 class="hero-title" data-hero-title>
+            <span class="hero-line" data-i18n="home.hero.line1">Websites für Unternehmen,</span>
+            <span class="hero-line" data-i18n="home.hero.line2">die professionell wirken</span>
+            <span class="hero-line" data-i18n="home.hero.line3">und Anfragen gewinnen.</span>
+        </h1>
+        <p class="hero-subtext hero-reveal" data-i18n="home.hero.text">Wir entwickeln moderne Websites für lokale Unternehmen, Organisationen und Dienstleister – strategisch geplant, sauber umgesetzt und zuverlässig betreut.</p>
+        <div class="hero-actions hero-reveal">
+            <a class="button button-gold button-large" asp-page="/Anfrage" data-i18n="home.hero.primary">Projekt anfragen</a>
+            <a class="button button-ghost button-large" href="#portfolio" data-i18n="home.hero.secondary">Referenzen ansehen</a>
         </div>
+    </div>
 
-        <div class="hero-preview hero-reveal" aria-label="Website-Vorschau">
-            <div class="browser-shell">
-                <div class="browser-topbar">
+    <div class="hero-marquee" aria-label="Leistungsübersicht" data-i18n-aria="home.marquee.label">
+        <div class="marquee-track" data-marquee-track>
+            <span data-i18n="home.marquee.webdesign">Webdesign</span>
+            <span data-i18n="home.marquee.hosting">Hosting</span>
+            <span data-i18n="home.marquee.chatbots">KI-Chatbots</span>
+            <span data-i18n="home.marquee.seo">SEO</span>
+            <span data-i18n="home.marquee.custom">Individuelle Lösungen</span>
+            <span data-i18n="home.marquee.webdesign">Webdesign</span>
+            <span data-i18n="home.marquee.hosting">Hosting</span>
+            <span data-i18n="home.marquee.chatbots">KI-Chatbots</span>
+            <span data-i18n="home.marquee.seo">SEO</span>
+            <span data-i18n="home.marquee.custom">Individuelle Lösungen</span>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="leistungen" data-section>
+    <div class="section-heading">
+        <p class="eyebrow" data-i18n="home.services.eyebrow">Leistungen</p>
+        <h2 data-i18n="home.services.title">Was wir für Sie umsetzen</h2>
+        <p data-i18n="home.services.text">Von der ersten Struktur bis zum laufenden Betrieb erhalten Sie eine Website, die optisch überzeugt, technisch sauber ist und zu Ihren Zielen passt.</p>
+    </div>
+
+    <div class="services-grid">
+        <article class="service-card" data-service-card>
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18"></path><path d="M12 3a14 14 0 0 0 0 18"></path></svg>
+            </div>
+            <div>
+                <h3 data-i18n="home.services.subscription.title">Website-Abo</h3>
+                <p data-i18n="home.services.subscription.text">Wir erstellen, hosten und betreuen Ihre Website laufend. Sie erhalten einen verlässlichen Ansprechpartner für Änderungen und Betrieb.</p>
+            </div>
+            <span class="price-badge" data-i18n="home.services.subscription.price">Ab 49 €/Monat</span>
+        </article>
+
+        <article class="service-card" data-service-card>
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8"></path><path d="M12 17v4"></path><path d="m8 9 2 2-2 2"></path><path d="M13 13h3"></path></svg>
+            </div>
+            <div>
+                <h3 data-i18n="home.services.fixed.title">Fixpreis-Website</h3>
+                <p data-i18n="home.services.fixed.text">Eine professionelle Website als abgeschlossenes Projekt – klar kalkuliert, responsiv umgesetzt und bereit zur Übergabe.</p>
+            </div>
+            <span class="price-badge" data-i18n="home.services.fixed.price">Ab 299 €</span>
+        </article>
+
+        <article class="service-card" data-service-card>
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="11" rx="3"></rect><path d="M9 7V5a3 3 0 0 1 6 0v2"></path><path d="M8 12h.01"></path><path d="M16 12h.01"></path><path d="M10 15h4"></path></svg>
+            </div>
+            <div>
+                <h3 data-i18n="home.services.chatbot.title">KI-Chatbot</h3>
+                <p data-i18n="home.services.chatbot.text">Ein intelligenter Assistent beantwortet häufige Fragen, entlastet Ihr Team und unterstützt Interessenten rund um die Uhr.</p>
+            </div>
+            <span class="price-badge" data-i18n="home.services.chatbot.price">Ab 79 €/Monat</span>
+        </article>
+
+        <article class="service-card" data-service-card>
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.4 2.4-3-3z"></path><path d="M15 5l4 4"></path></svg>
+            </div>
+            <div>
+                <h3 data-i18n="home.services.custom.title">Individuelle Lösung</h3>
+                <p data-i18n="home.services.custom.text">Wenn Ihre Anforderungen über eine klassische Website hinausgehen, entwickeln wir eine passende technische Lösung.</p>
+            </div>
+            <span class="price-badge" data-i18n="home.services.custom.price">Auf Anfrage</span>
+        </article>
+
+        <article class="service-card" data-service-card>
+            <div class="service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"></path><path d="M8 9h8"></path><path d="M8 13h5"></path></svg>
+            </div>
+            <div>
+                <h3 data-i18n="home.services.consulting.title">Beratung</h3>
+                <p data-i18n="home.services.consulting.text">Wir unterstützen Sie bei Website-Konzept, Hosting, technischer Strategie und sinnvollen nächsten Schritten.</p>
+            </div>
+            <span class="price-badge" data-i18n="home.services.consulting.price">Stundenbasiert</span>
+        </article>
+    </div>
+</section>
+
+<section class="section section-muted" id="preise" data-section>
+    <div class="section-heading">
+        <p class="eyebrow" data-i18n="home.pricing.eyebrow">Preise</p>
+        <h2 data-i18n="home.pricing.title">Transparente Pakete</h2>
+        <p data-i18n="home.pricing.text">Sie wissen vor dem Start, welche Leistung Sie erhalten. Den genauen Umfang stimmen wir im Erstgespräch gemeinsam ab.</p>
+    </div>
+
+    <div class="pricing-grid">
+        <article class="pricing-card" data-pricing-card>
+            <div>
+                <p class="pricing-label" data-i18n="home.pricing.starter.label">Starter</p>
+                <h3 data-i18n="home.pricing.starter.price">Einmalig 299 €</h3>
+                <p data-i18n="home.pricing.starter.text">Für kompakte Unternehmensseiten mit klarer Struktur und professionellem Auftritt.</p>
+            </div>
+            <ul>
+                <li data-i18n="home.pricing.starter.item1">1-5 Unterseiten</li>
+                <li data-i18n="home.pricing.starter.item2">Responsives Design</li>
+                <li data-i18n="home.pricing.starter.item3">Übergabe als Datei</li>
+                <li data-i18n="home.pricing.starter.item4">Portfolio-Referenz optional</li>
+            </ul>
+            <a class="button button-ghost" asp-page="/Anfrage" asp-route-paket="fixpreis" data-i18n="common.select">Auswählen</a>
+        </article>
+
+        <article class="pricing-card pricing-card-featured" data-pricing-card>
+            <span class="featured-badge" data-i18n="home.pricing.pro.badge">Beliebt</span>
+            <div>
+                <p class="pricing-label" data-i18n="home.pricing.pro.label">Abo Pro</p>
+                <h3 data-i18n="home.pricing.pro.price">79 €/Monat</h3>
+                <p data-i18n="home.pricing.pro.text">Die betreute Komplettlösung für Unternehmen, die langfristig zuverlässig online sein möchten.</p>
+            </div>
+            <ul>
+                <li data-i18n="home.pricing.pro.item1">Unbegrenzte Änderungen</li>
+                <li data-i18n="home.pricing.pro.item2">Hosting inklusive</li>
+                <li data-i18n="home.pricing.pro.item3">SSL und Domain-Setup</li>
+                <li data-i18n="home.pricing.pro.item4">Monatlich kündbar</li>
+            </ul>
+            <a class="button button-gold" asp-page="/Anfrage" asp-route-paket="abo" data-i18n="common.select">Auswählen</a>
+        </article>
+
+        <article class="pricing-card" data-pricing-card>
+            <div>
+                <p class="pricing-label" data-i18n="home.pricing.business.label">Business</p>
+                <h3 data-i18n="home.pricing.business.price">Ab 149 €/Monat</h3>
+                <p data-i18n="home.pricing.business.text">Für Websites mit KI-Integration, erweiterten Funktionen und priorisierter Betreuung.</p>
+            </div>
+            <ul>
+                <li data-i18n="home.pricing.business.item1">Alles aus Pro</li>
+                <li data-i18n="home.pricing.business.item2">KI-Chatbot inklusive</li>
+                <li data-i18n="home.pricing.business.item3">Prioritäts-Support</li>
+                <li data-i18n="home.pricing.business.item4">Individuelle Features</li>
+            </ul>
+            <a class="button button-ghost" asp-page="/Anfrage" asp-route-paket="business" data-i18n="common.request">Anfragen</a>
+        </article>
+    </div>
+</section>
+
+<section class="section" id="ablauf" data-section>
+    <div class="section-heading">
+        <p class="eyebrow" data-i18n="home.process.eyebrow">Ablauf</p>
+        <h2 data-i18n="home.process.title">So entsteht Ihr Projekt</h2>
+        <p data-i18n="home.process.text">Ein klarer Prozess sorgt dafür, dass Sie jederzeit wissen, wo Ihr Projekt steht und welche Entscheidungen anstehen.</p>
+    </div>
+
+    <div class="timeline">
+        <svg class="timeline-line timeline-line-desktop" viewBox="0 0 1000 8" preserveAspectRatio="none" aria-hidden="true">
+            <path data-timeline-path d="M4 4H996"></path>
+        </svg>
+        <svg class="timeline-line timeline-line-mobile" viewBox="0 0 8 720" preserveAspectRatio="none" aria-hidden="true">
+            <path data-timeline-path d="M4 4V716"></path>
+        </svg>
+
+        <article class="timeline-step">
+            <span>1</span>
+            <h3 data-i18n="home.process.step1.title">Anfrage</h3>
+            <p data-i18n="home.process.step1.text">Sie senden uns die wichtigsten Eckdaten zu Ihrem Vorhaben.</p>
+        </article>
+        <article class="timeline-step">
+            <span>2</span>
+            <h3 data-i18n="home.process.step2.title">Erstgespräch</h3>
+            <p data-i18n="home.process.step2.text">Wir klären Zielgruppe, Umfang, Inhalte und technische Anforderungen.</p>
+        </article>
+        <article class="timeline-step">
+            <span>3</span>
+            <h3 data-i18n="home.process.step3.title">Umsetzung</h3>
+            <p data-i18n="home.process.step3.text">Design, Entwicklung und Inhalte werden strukturiert umgesetzt.</p>
+        </article>
+        <article class="timeline-step">
+            <span>4</span>
+            <h3 data-i18n="home.process.step4.title">Launch</h3>
+            <p data-i18n="home.process.step4.text">Ihre Website geht online und bleibt technisch betreut.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section section-muted" id="portfolio" data-section>
+    <div class="section-heading">
+        <p class="eyebrow" data-i18n="home.portfolio.eyebrow">Referenzen</p>
+        <h2 data-i18n="home.portfolio.title">Ausgewählte Projektvorschauen</h2>
+        <p data-i18n="home.portfolio.text">Beispielhafte Vorschauen für typische Projekte. Echte Referenzen stellen wir Ihnen gerne im Gespräch vor.</p>
+    </div>
+
+    <div class="portfolio-grid">
+        <article class="portfolio-card" data-portfolio-card>
+            <div class="portfolio-visual visual-restaurant" role="img" aria-label="Website-Vorschau für ein Restaurant" data-i18n-aria="home.portfolio.card1.alt">
+                <div class="browser-mockup">
                     <span></span><span></span><span></span>
-                    <strong>Lokaler Betrieb</strong>
+                    <div class="mockup-hero"></div>
+                    <div class="mockup-lines"></div>
                 </div>
-                <div class="preview-hero-card">
-                    <div>
-                        <small>Neue Website</small>
-                        <strong>Reservierungen, Leistungen und Anfragen klar an einem Ort.</strong>
-                    </div>
-                    <a href="#kontakt-preview">Anfragen</a>
-                </div>
-                <div class="preview-dashboard">
-                    <div class="preview-panel large">
-                        <span>Website-Abo</span>
-                        <strong>Betreuung aktiv</strong>
-                        <p>Kleine Änderungen, Wartung und technisches Setup bleiben planbar.</p>
-                    </div>
-                    <div class="preview-panel">
-                        <span>Hosting</span>
-                        <strong>extern eingerichtet</strong>
-                    </div>
-                    <div class="preview-panel">
-                        <span>KI-Bot</span>
-                        <strong>FAQ bereit</strong>
-                    </div>
-                </div>
-                <div class="chat-bubble">
-                    <span>KI</span>
-                    <p>Hallo, wie können wir helfen?</p>
-                </div>
+                <div class="portfolio-overlay" data-i18n="home.portfolio.view">Ansehen</div>
             </div>
+            <div class="portfolio-copy">
+                <span data-i18n="home.portfolio.card1.category">Restaurant</span>
+                <h3 data-i18n="home.portfolio.card1.title">Reservierung & Speisekarte</h3>
+                <p data-i18n="home.portfolio.card1.text">Premium-Auftritt mit Speisekarte, Reservierungsanfrage und lokalem SEO.</p>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-portfolio-card>
+            <div class="portfolio-visual visual-craft" role="img" aria-label="Website-Vorschau für einen Handwerksbetrieb" data-i18n-aria="home.portfolio.card2.alt">
+                <div class="browser-mockup">
+                    <span></span><span></span><span></span>
+                    <div class="mockup-grid"></div>
+                    <div class="mockup-lines"></div>
+                </div>
+                <div class="portfolio-overlay" data-i18n="home.portfolio.view">Ansehen</div>
+            </div>
+            <div class="portfolio-copy">
+                <span data-i18n="home.portfolio.card2.category">Handwerk</span>
+                <h3 data-i18n="home.portfolio.card2.title">Leistungsseiten & Anfragefluss</h3>
+                <p data-i18n="home.portfolio.card2.text">Klare Leistungsstruktur, mobile Optimierung und direkter Kontaktfluss.</p>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-portfolio-card>
+            <div class="portfolio-visual visual-organization" role="img" aria-label="Website-Vorschau für eine Organisation" data-i18n-aria="home.portfolio.card3.alt">
+                <div class="browser-mockup">
+                    <span></span><span></span><span></span>
+                    <div class="mockup-columns"></div>
+                    <div class="mockup-lines"></div>
+                </div>
+                <div class="portfolio-overlay" data-i18n="home.portfolio.view">Ansehen</div>
+            </div>
+            <div class="portfolio-copy">
+                <span data-i18n="home.portfolio.card3.category">Organisation</span>
+                <h3 data-i18n="home.portfolio.card3.title">Information & Veranstaltungen</h3>
+                <p data-i18n="home.portfolio.card3.text">Übersichtliche Informationsarchitektur mit Event-Bereich und Formularen.</p>
+            </div>
+        </article>
+
+        <article class="portfolio-card" data-portfolio-card>
+            <div class="portfolio-visual visual-service" role="img" aria-label="Website-Vorschau für einen Dienstleister" data-i18n-aria="home.portfolio.card4.alt">
+                <div class="browser-mockup">
+                    <span></span><span></span><span></span>
+                    <div class="mockup-profile"></div>
+                    <div class="mockup-lines"></div>
+                </div>
+                <div class="portfolio-overlay" data-i18n="home.portfolio.view">Ansehen</div>
+            </div>
+            <div class="portfolio-copy">
+                <span data-i18n="home.portfolio.card4.category">Dienstleistung</span>
+                <h3 data-i18n="home.portfolio.card4.title">Präsentation & Kontakt</h3>
+                <p data-i18n="home.portfolio.card4.text">Elegante Website mit Galerie, Kontaktformular und klaren Angebotsseiten.</p>
+            </div>
+        </article>
+    </div>
+
+    <p class="portfolio-note" data-i18n="home.portfolio.note">Weitere Referenzen auf Anfrage</p>
+</section>
+
+<section class="section trust-section" data-section>
+    <div class="trust-grid">
+        <div class="trust-column">
+            <p class="eyebrow" data-i18n="home.trust.eyebrow">Vertrauen</p>
+            <h2 data-i18n="home.trust.title">Verlässlich, transparent und persönlich.</h2>
+            <ul class="trust-list">
+                <li data-i18n="home.trust.item1">Direkte Kommunikation und kurze Entscheidungswege</li>
+                <li data-i18n="home.trust.item2">Schnelle Umsetzung mit sauberer technischer Basis</li>
+                <li data-i18n="home.trust.item3">Klare Preise und nachvollziehbare Leistungen</li>
+                <li data-i18n="home.trust.item4">Persönliche Betreuung statt anonymer Ticket-Prozesse</li>
+            </ul>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat">
+                <strong><span data-counter data-count="10">0</span>+</strong>
+                <span data-i18n="home.trust.stat1">Projekte</span>
+            </div>
+            <div class="stat">
+                <strong><span data-counter data-count="100">0</span>%</strong>
+                <span data-i18n="home.trust.stat2">Kundenzufriedenheit</span>
+            </div>
+            <div class="stat">
+                <strong><span data-counter data-count="48">0</span>h</strong>
+                <span data-i18n="home.trust.stat3">Antwortzeit</span>
+            </div>
+        </div>
+
+        <div class="testimonials">
+            <blockquote>
+                <p data-i18n="home.trust.quote1">„Die neue Website wirkt endlich so hochwertig wie unser Betrieb.“</p>
+                <cite>[KUNDENNAME], [UNTERNEHMEN]</cite>
+            </blockquote>
+            <blockquote>
+                <p data-i18n="home.trust.quote2">„Die Zusammenarbeit war klar, schnell und sehr professionell.“</p>
+                <cite>[KUNDENNAME], [UNTERNEHMEN]</cite>
+            </blockquote>
+            <blockquote>
+                <p data-i18n="home.trust.quote3">„Seit dem Launch erhalten wir deutlich strukturiertere Anfragen.“</p>
+                <cite>[KUNDENNAME], [UNTERNEHMEN]</cite>
+            </blockquote>
         </div>
     </div>
 </section>
 
-<section class="wide-section" id="leistungen" data-section>
-    <div class="section-inner">
-        <div class="section-header">
-            <div>
-                <p class="eyebrow">Leistungen</p>
-                <h2>Was wir für lokale Betriebe umsetzen</h2>
-            </div>
-            <p>Ob Restaurant Website, Handwerker Website, Vereinsseite oder Website-Abo: Wir bauen moderne Websites für kleine Unternehmen, die professionell wirken und technisch sauber betreut werden.</p>
-        </div>
-
-        <div class="services-wide-grid">
-            @foreach (var service in SiteContent.Services)
-            {
-                <article class="content-card service-wide-card" data-service-card>
-                    <span class="card-kicker">@service.Meta</span>
-                    <h3>@service.Title</h3>
-                    <p>@service.Text</p>
-                    <a class="text-link" href="@service.Link">Mehr erfahren</a>
-                </article>
-            }
-        </div>
-    </div>
-</section>
-
-<section class="wide-section section-alt" data-section>
-    <div class="section-inner split-layout">
+<section class="section section-muted about-section" id="ueber-uns" data-section>
+    <div class="about-grid">
         <div>
-            <p class="eyebrow">Warum wir</p>
-            <h2>Persönlich, modern und ohne Technikstress.</h2>
-            <p class="lead">Bernhard und Lukas verbinden direkte Kommunikation mit moderner Entwicklung. Besonders lokale Unternehmen profitieren davon, wenn Website erstellen lassen, Website Betreuung und digitale Lösungen aus einer Hand kommen.</p>
+            <p class="eyebrow" data-i18n="home.about.eyebrow">Über uns</p>
+            <h2 data-i18n="home.about.title">Junge Entwickler. Professioneller Anspruch.</h2>
+            <p data-i18n="home.about.text">Wir sind [NAME1] und [NAME2], zwei Entwickler aus Österreich. Wir unterstützen Unternehmen mit modernen Websites, klarer Kommunikation und fair kalkulierten Lösungen.</p>
+            <span class="austria-badge" data-i18n="home.about.badge">Lokal aus Österreich</span>
         </div>
-        <div class="reason-grid">
-            <article class="mini-card">
-                <h3>Lokaler Service</h3>
-                <p>Persönlicher Kontakt, klare Abstimmung und ein Ansprechpartner statt anonymer Agenturprozesse.</p>
-            </article>
-            <article class="mini-card">
-                <h3>Klare Modelle</h3>
-                <p>Website-Abo, Fixpreis-Website, Beratung oder Custom Projekt: Der Umfang wird transparent vereinbart.</p>
-            </article>
-            <article class="mini-card">
-                <h3>Moderne Umsetzung</h3>
-                <p>Responsive Layouts, saubere Struktur, SEO-Basics und gute Bedienbarkeit auf Handy, iPad und Desktop.</p>
-            </article>
-            <article class="mini-card">
-                <h3>Passend für KMU</h3>
-                <p>Webdesign für kleine Unternehmen, lokale Betriebe, Vereine, Dienstleister und Organisationen.</p>
-            </article>
-        </div>
-    </div>
-</section>
 
-<section class="wide-section" id="preise" data-section>
-    <div class="section-inner">
-        <div class="section-header">
-            <div>
-                <p class="eyebrow">Preise</p>
-                <h2>Kurzer Überblick über unsere Modelle</h2>
+        <div class="avatar-grid">
+            <div class="avatar-card">
+                <div class="avatar-circle">[N1]</div>
+                <h3>[NAME1]</h3>
+                <p data-i18n="home.about.role1">Design & Frontend</p>
             </div>
-            <p>Alle Preise sind Richtwerte. Der tatsächliche Preis hängt vom Umfang, gewünschten Funktionen, laufender Betreuung und externen Kosten ab.</p>
-        </div>
-
-        <div class="pricing-grid pricing-preview-grid">
-            @foreach (var package in SiteContent.PricingPackages)
-            {
-                <article class="pricing-card @(package.Slug == "business" ? "pricing-card-featured" : "")" data-pricing-card>
-                    @if (package.Slug == "business")
-                    {
-                        <span class="featured-badge">Beliebt für lokale Unternehmen</span>
-                    }
-                    <div>
-                        <p class="pricing-label">@package.Name</p>
-                        <h3>@package.MonthlyPrice</h3>
-                        <p>@package.AlternativePrice</p>
-                    </div>
-                    <p>Geeignet für: @package.SuitableFor</p>
-                    <ul>
-                        @foreach (var item in package.Includes.Take(4))
-                        {
-                            <li>@item</li>
-                        }
-                    </ul>
-                    <a class="button @(package.Slug == "business" ? "button-gold" : "button-ghost")" asp-page="/Angebote" asp-fragment="@package.Slug">Details ansehen</a>
-                </article>
-            }
-        </div>
-
-        <div class="section-action">
-            <a class="button button-gold button-large" asp-page="/Angebote">Zur Angebotsübersicht</a>
-        </div>
-    </div>
-</section>
-
-<section class="wide-section section-alt" id="ablauf" data-section>
-    <div class="section-inner">
-        <div class="section-header">
-            <div>
-                <p class="eyebrow">Ablauf</p>
-                <h2>Vom Erstkontakt bis zur laufenden Betreuung</h2>
-            </div>
-            <p>Ein klarer Prozess macht Umfang, Zeitplan und Verantwortlichkeiten verständlich, bevor die Umsetzung beginnt.</p>
-        </div>
-
-        <div class="process-grid">
-            @foreach (var step in SiteContent.Process)
-            {
-                <article class="process-step">
-                    <span>@step.Number</span>
-                    <h3>@step.Title</h3>
-                    <p>@step.Text</p>
-                </article>
-            }
-        </div>
-    </div>
-</section>
-
-<section class="wide-section" data-section>
-    <div class="section-inner split-layout platforms-layout">
-        <div>
-            <p class="eyebrow">Technologie</p>
-            <h2>Flexible Umsetzung auf modernen Plattformen</h2>
-            <p class="lead">Je nach Projekt richten wir Websites auf passenden Plattformen wie Netlify, Vercel, Cloudflare Pages, Railway oder Hostinger ein. KI-Funktionen können bei Bedarf über APIs wie OpenAI umgesetzt werden.</p>
-            <p class="fineprint">Alle genannten Marken gehören den jeweiligen Rechteinhabern. Es besteht keine offizielle Partnerschaft, sofern nicht ausdrücklich angegeben.</p>
-        </div>
-        <div>
-            <p class="platform-heading">Mögliche Hosting- und Technologieplattformen</p>
-            <div class="platform-badges">
-                @foreach (var platform in SiteContent.Platforms)
-                {
-                    <span>@platform</span>
-                }
+            <div class="avatar-card">
+                <div class="avatar-circle">[N2]</div>
+                <h3>[NAME2]</h3>
+                <p data-i18n="home.about.role2">Backend & Technik</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="wide-section section-alt" data-section>
-    <div class="section-inner">
-        <div class="section-header">
-            <div>
-                <p class="eyebrow">FAQ</p>
-                <h2>Häufige Fragen</h2>
-            </div>
-            <p>Die wichtigsten Punkte zu Website-Abo, Fixpreis-Projekten, Hosting-Einrichtung, Website Betreuung und KI-Chatbots.</p>
-        </div>
-
-        <div class="faq-list">
-            @foreach (var faq in SiteContent.FaqItems)
-            {
-                <details>
-                    <summary>@faq.Question</summary>
-                    <p>@faq.Answer</p>
-                </details>
-            }
-        </div>
-    </div>
-</section>
-
-<section class="final-cta" id="kontakt-preview" data-section>
+<section class="final-cta" id="kontakt" data-section>
     <div>
-        <p class="eyebrow">Unverbindliche Anfrage</p>
-        <h2>Lassen Sie uns über Ihre Website sprechen.</h2>
-        <p>Schreiben Sie kurz, was Sie brauchen. Wir melden uns mit einer ersten Einschätzung und einem passenden Vorschlag.</p>
-        <a class="button button-gold button-large" asp-page="/Kontakt">Unverbindlich anfragen</a>
+        <p class="eyebrow" data-i18n="home.cta.eyebrow">Kostenlose Erstberatung</p>
+        <h2 data-i18n="home.cta.title">Bereit für eine Website, die Vertrauen schafft?</h2>
+        <p data-i18n="home.cta.text">Wir prüfen Ihr Vorhaben, empfehlen den passenden Umfang und zeigen Ihnen den nächsten sinnvollen Schritt.</p>
+        <a class="button button-gold button-large" asp-page="/Anfrage" data-i18n="home.cta.button">Projekt unverbindlich anfragen</a>
     </div>
 </section>

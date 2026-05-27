@@ -40,7 +40,7 @@
                         <h2 data-i18n="request.step1.title">Welche Leistung benötigen Sie?</h2>
                     </div>
 
-                    <div class="choice-grid inquiry-choice-grid" data-choice-group>
+                    <div class="choice-grid three" data-choice-group>
                         <label class="select-card @(Model.Input.Paket == "abo" ? "is-selected" : "")">
                             <input type="radio" name="Input.Paket" value="abo" checked="@(Model.Input.Paket == "abo")" required />
                             <span class="fake-check"></span>
@@ -55,25 +55,11 @@
                             <p data-i18n="request.step1.fixed.text">Ein klar abgegrenztes Projekt mit professioneller Übergabe.</p>
                         </label>
 
-                        <label class="select-card @(Model.Input.Paket == "chatbot" ? "is-selected" : "")">
-                            <input type="radio" name="Input.Paket" value="chatbot" checked="@(Model.Input.Paket == "chatbot")" required />
-                            <span class="fake-check"></span>
-                            <strong>KI-Chatbot</strong>
-                            <p>FAQ-, Lead- oder Anfrage-Bot als Erweiterung für eine Website.</p>
-                        </label>
-
                         <label class="select-card @(Model.Input.Paket == "beratung" ? "is-selected" : "")">
                             <input type="radio" name="Input.Paket" value="beratung" checked="@(Model.Input.Paket == "beratung")" required />
                             <span class="fake-check"></span>
                             <strong data-i18n="request.step1.advice.title">Beratung gewünscht</strong>
                             <p data-i18n="request.step1.advice.text">Wir empfehlen Ihnen nach kurzer Analyse den passenden Umfang.</p>
-                        </label>
-
-                        <label class="select-card @(Model.Input.Paket == "custom" ? "is-selected" : "")">
-                            <input type="radio" name="Input.Paket" value="custom" checked="@(Model.Input.Paket == "custom")" required />
-                            <span class="fake-check"></span>
-                            <strong>Custom Projekt</strong>
-                            <p>Individuelle Formulare, Buchungen, Automatisierungen oder Integrationen.</p>
                         </label>
                     </div>
                 </section>

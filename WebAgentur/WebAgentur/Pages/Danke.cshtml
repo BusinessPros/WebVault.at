@@ -1,8 +1,8 @@
-@page "/danke"
+@page
 @model WebAgentur.Pages.DankeModel
 @{
     ViewData["Title"] = "Danke";
-    ViewData["Description"] = "Vielen Dank für Ihre Anfrage.";
+    ViewData["TitleKey"] = "meta.thanksTitle";
     ViewData["BodyClass"] = "thanks-page";
 }
 
@@ -12,9 +12,9 @@
             <circle cx="60" cy="60" r="52"></circle>
             <path data-check-path d="M36 62l16 16 34-39"></path>
         </svg>
-        <p class="eyebrow">Anfrage gesendet</p>
-        <h1>Vielen Dank für Ihre Anfrage.</h1>
-        <p>Wir melden uns mit einer ersten Einschätzung bei Ihnen.</p>
-        <a class="button button-gold button-large" asp-page="/Index">Zurück zur Startseite</a>
+        <p class="eyebrow" data-i18n="thanks.eyebrow">Anfrage gesendet</p>
+        <h1 data-i18n="thanks.title">Vielen Dank für Ihre Anfrage.</h1>
+        <p data-i18n="thanks.text">Wir melden uns innerhalb von 48 Stunden mit einer ersten Einschätzung bei Ihnen.</p>
+        <a class="button button-gold button-large" asp-page="/Index" data-i18n="thanks.button">Zurück zur Startseite</a>
     </div>
 </section>

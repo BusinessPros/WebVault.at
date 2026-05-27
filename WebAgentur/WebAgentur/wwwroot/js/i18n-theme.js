@@ -2,11 +2,11 @@
     const translations = {
         de: {
             "meta.description": "Professionelle Webagentur aus Österreich für Websites, Hosting, KI-Integrationen und digitale Lösungen.",
-            "meta.homeTitle": "Moderne Websites für lokale Unternehmen - [PROJEKTNAME]",
-            "meta.requestTitle": "Projekt anfragen - [PROJEKTNAME]",
-            "meta.thanksTitle": "Danke - [PROJEKTNAME]",
-            "meta.privacyTitle": "Datenschutz - [PROJEKTNAME]",
-            "meta.imprintTitle": "Impressum - [PROJEKTNAME]",
+            "meta.homeTitle": "Webagentur für professionelle Websites - [AGENTUR_NAME]",
+            "meta.requestTitle": "Projekt anfragen - [AGENTUR_NAME]",
+            "meta.thanksTitle": "Danke - [AGENTUR_NAME]",
+            "meta.privacyTitle": "Datenschutz - [AGENTUR_NAME]",
+            "meta.imprintTitle": "Impressum - [AGENTUR_NAME]",
             "nav.mainLabel": "Hauptnavigation",
             "nav.mobileLabel": "Mobile Navigation",
             "nav.languageLabel": "Sprache wählen",
@@ -25,7 +25,7 @@
             "footer.imprint": "Impressum",
             "footer.privacy": "Datenschutz",
             "footer.contact": "Kontakt",
-            "footer.copyright": "© 2026 [PROJEKTNAME]. Alle Rechte vorbehalten.",
+            "footer.copyright": "© 2026 [AGENTUR_NAME]. Alle Rechte vorbehalten.",
             "footer.madeIn": "Entwickelt in Österreich.",
             "common.select": "Auswählen",
             "common.request": "Anfragen",
@@ -136,7 +136,7 @@
             "home.trust.quote3": "„Seit dem Launch erhalten wir deutlich strukturiertere Anfragen.“",
             "home.about.eyebrow": "Über uns",
             "home.about.title": "Junge Entwickler. Professioneller Anspruch.",
-            "home.about.text": "Wir sind Bernhard und Lukas, zwei Entwickler aus Österreich. Wir unterstützen Unternehmen mit modernen Websites, klarer Kommunikation und fair kalkulierten Lösungen.",
+            "home.about.text": "Wir sind [NAME1] und [NAME2], zwei Entwickler aus Österreich. Wir unterstützen Unternehmen mit modernen Websites, klarer Kommunikation und fair kalkulierten Lösungen.",
             "home.about.badge": "Lokal aus Österreich",
             "home.about.role1": "Design & Frontend",
             "home.about.role2": "Backend & Technik",
@@ -253,26 +253,26 @@
             "legal.eyebrow": "Rechtliches",
             "privacy.title": "Datenschutz",
             "privacy.controller.title": "Verantwortliche Stelle",
-            "privacy.controller.contact": "Kontakt: [E-MAIL]",
+            "privacy.controller.contact": "Kontakt: [EMAIL]",
             "privacy.form.title": "Anfrageformular",
             "privacy.form.text": "Wenn Sie das Anfrageformular nutzen, speichern wir Ihre Angaben, um Ihre Anfrage zu bearbeiten und Sie zu kontaktieren. Die Daten werden nicht verkauft und nicht für fremde Werbezwecke verwendet.",
             "privacy.retention.title": "Speicherdauer",
             "privacy.retention.text": "Anfragedaten werden nur so lange gespeichert, wie es für Bearbeitung, Nachverfolgung oder rechtliche Dokumentation erforderlich ist.",
             "privacy.rights.title": "Ihre Rechte",
-            "privacy.rights.text": "Sie können Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung verlangen. Schreiben Sie dafür an [E-MAIL].",
+            "privacy.rights.text": "Sie können Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung verlangen. Schreiben Sie dafür an [EMAIL].",
             "imprint.title": "Impressum",
             "imprint.contact.title": "Kontakt",
             "imprint.contact.phone": "Telefon: [TELEFON]",
             "imprint.content.title": "Verantwortlich für den Inhalt",
-            "imprint.content.text": "Bernhard und Lukas, erreichbar unter den oben genannten Kontaktdaten."
+            "imprint.content.text": "[NAME1] und [NAME2], erreichbar unter den oben genannten Kontaktdaten."
         },
         en: {
             "meta.description": "Professional web agency from Austria for websites, hosting, AI integrations, and digital solutions.",
-            "meta.homeTitle": "Modern Websites for Local Businesses - [PROJEKTNAME]",
-            "meta.requestTitle": "Project Inquiry - [PROJEKTNAME]",
-            "meta.thanksTitle": "Thank You - [PROJEKTNAME]",
-            "meta.privacyTitle": "Privacy Policy - [PROJEKTNAME]",
-            "meta.imprintTitle": "Legal Notice - [PROJEKTNAME]",
+            "meta.homeTitle": "Web Agency for Professional Websites - [AGENTUR_NAME]",
+            "meta.requestTitle": "Project Inquiry - [AGENTUR_NAME]",
+            "meta.thanksTitle": "Thank You - [AGENTUR_NAME]",
+            "meta.privacyTitle": "Privacy Policy - [AGENTUR_NAME]",
+            "meta.imprintTitle": "Legal Notice - [AGENTUR_NAME]",
             "nav.mainLabel": "Main navigation",
             "nav.mobileLabel": "Mobile navigation",
             "nav.languageLabel": "Choose language",
@@ -291,7 +291,7 @@
             "footer.imprint": "Legal notice",
             "footer.privacy": "Privacy",
             "footer.contact": "Contact",
-            "footer.copyright": "© 2026 [PROJEKTNAME]. All rights reserved.",
+            "footer.copyright": "© 2026 [AGENTUR_NAME]. All rights reserved.",
             "footer.madeIn": "Developed in Austria.",
             "common.select": "Select",
             "common.request": "Request",
@@ -402,7 +402,7 @@
             "home.trust.quote3": "\"Since launch, we receive much better structured inquiries.\"",
             "home.about.eyebrow": "About",
             "home.about.title": "Young developers. Professional standards.",
-            "home.about.text": "We are Bernhard and Lukas, two developers from Austria. We support companies with modern websites, clear communication, and fairly calculated solutions.",
+            "home.about.text": "We are [NAME1] and [NAME2], two developers from Austria. We support companies with modern websites, clear communication, and fairly calculated solutions.",
             "home.about.badge": "Local from Austria",
             "home.about.role1": "Design & frontend",
             "home.about.role2": "Backend & technology",
@@ -519,18 +519,18 @@
             "legal.eyebrow": "Legal",
             "privacy.title": "Privacy Policy",
             "privacy.controller.title": "Controller",
-            "privacy.controller.contact": "Contact: [E-MAIL]",
+            "privacy.controller.contact": "Contact: [EMAIL]",
             "privacy.form.title": "Inquiry form",
             "privacy.form.text": "When you use the inquiry form, we store your details to process your inquiry and contact you. The data is not sold and not used for third-party advertising.",
             "privacy.retention.title": "Retention period",
             "privacy.retention.text": "Inquiry data is stored only as long as necessary for processing, follow-up, or legal documentation.",
             "privacy.rights.title": "Your rights",
-            "privacy.rights.text": "You can request access, correction, deletion, or restriction of processing. Please contact [E-MAIL].",
+            "privacy.rights.text": "You can request access, correction, deletion, or restriction of processing. Please contact [EMAIL].",
             "imprint.title": "Legal Notice",
             "imprint.contact.title": "Contact",
             "imprint.contact.phone": "Phone: [TELEFON]",
             "imprint.content.title": "Responsible for content",
-            "imprint.content.text": "Bernhard and Lukas, reachable via the contact details above."
+            "imprint.content.text": "[NAME1] and [NAME2], reachable via the contact details above."
         }
     };
 
@@ -545,7 +545,8 @@
             return urlLanguage;
         }
 
-        return "de";
+        const savedLanguage = localStorage.getItem("wa-language");
+        return supportedLanguages.includes(savedLanguage) ? savedLanguage : "de";
     }
 
     function translate(key, replacements) {

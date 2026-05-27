@@ -1,29 +1,30 @@
-@page "/impressum"
+@page
 @{
     ViewData["Title"] = "Impressum";
-    ViewData["Description"] = "Impressum Platzhalter für [PROJEKTNAME].";
+    ViewData["TitleKey"] = "meta.imprintTitle";
 }
 
 <section class="legal-page">
     <div class="legal-content">
-        <p class="eyebrow">Rechtliches</p>
-        <h1>Impressum</h1>
+        <p class="eyebrow" data-i18n="legal.eyebrow">Rechtliches</p>
+        <h1 data-i18n="imprint.title">Impressum</h1>
 
         <div class="legal-card">
-            <h2>Platzhalter</h2>
-            <p>Die vollständigen Impressumsdaten werden vor Veröffentlichung durch die verantwortliche Person ergänzt.</p>
+            <h2>[AGENTUR_NAME]</h2>
+            <p>[NAME1] und [NAME2]</p>
+            <p>[STRASSE HAUSNUMMER]</p>
+            <p>[PLZ ORT], Österreich</p>
         </div>
 
         <div class="legal-card">
-            <h2>[IMPRESSUM-DATEN]</h2>
-            <p>[VERANTWORTLICHE PERSON]</p>
-            <p>[ADRESSE]</p>
-            <p>[KONTAKT]</p>
+            <h2 data-i18n="imprint.contact.title">Kontakt</h2>
+            <p>E-Mail: [EMAIL]</p>
+            <p data-i18n="imprint.contact.phone">Telefon: [TELEFON]</p>
         </div>
 
         <div class="legal-card">
-            <h2>Hinweis</h2>
-            <p>Diese Seite ist kein finaler Rechtstext und muss vor Veröffentlichung geprüft und ergänzt werden.</p>
+            <h2 data-i18n="imprint.content.title">Verantwortlich für den Inhalt</h2>
+            <p data-i18n="imprint.content.text">[NAME1] und [NAME2], erreichbar unter den oben genannten Kontaktdaten.</p>
         </div>
     </div>
 </section>
