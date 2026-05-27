@@ -1,0 +1,49 @@
+@page "/portfolio"
+@{
+    ViewData["Title"] = "Beispiele & Demo-Projekte";
+    ViewData["Description"] = "Demo-Projekte für Restaurant Websites, Handwerker Websites, Beauty-Websites, Vereine und KI-Chatbot-Integrationen.";
+}
+
+<section class="page-hero compact-hero">
+    <div class="section-inner">
+        <p class="eyebrow">Portfolio</p>
+        <h1>Beispiele & Demo-Projekte</h1>
+        <p class="lead">Hier zeigen wir beispielhaft, wie moderne Websites für lokale Unternehmen aussehen können. Demo-Projekte dienen zur Veranschaulichung und sind keine echten Kundenreferenzen, sofern nicht ausdrücklich angegeben.</p>
+    </div>
+</section>
+
+<section class="wide-section">
+    <div class="section-inner">
+        <div class="portfolio-demo-grid">
+            @foreach (var item in SiteContent.PortfolioItems)
+            {
+                <article class="portfolio-demo-card" data-portfolio-card>
+                    <div class="portfolio-demo-visual visual-@item.VisualClass" role="img" aria-label="Demo-Vorschau: @item.Title">
+                        <div class="browser-mockup">
+                            <span></span><span></span><span></span>
+                            <div class="mockup-hero"></div>
+                            <div class="mockup-lines"></div>
+                        </div>
+                    </div>
+                    <div class="portfolio-demo-copy">
+                        <h2>@item.Title</h2>
+                        <p>@item.Description</p>
+                        <div class="tag-list">
+                            @foreach (var tag in item.Tags)
+                            {
+                                <span>@tag</span>
+                            }
+                        </div>
+                        <a class="button button-ghost" href="#demo-hinweis">Demo ansehen</a>
+                    </div>
+                </article>
+            }
+        </div>
+
+        <div class="notice-card demo-note" id="demo-hinweis">
+            <h2>Demo-Links</h2>
+            <p>Konkrete Demo-Links werden ergänzt, sobald die Vorschauen veröffentlicht sind. Platzhalter: [DEMO-LINK]</p>
+            <p>Es werden keine echten Firmennamen oder Logos ohne Erlaubnis verwendet.</p>
+        </div>
+    </div>
+</section>

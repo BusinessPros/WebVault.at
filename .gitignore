@@ -1,0 +1,24 @@
+# Build output
+**/[Bb]in/
+**/[Oo]bj/
+
+# IDE and editor files
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local environment/config
+.env
+.env.*
+*.local.json
+
+# Runtime form data with personal/customer information
+WebAgentur/WebAgentur/wwwroot/data/*.json
+!WebAgentur/WebAgentur/wwwroot/data/.gitkeep
+
+# OS files
+Thumbs.db
+Desktop.ini

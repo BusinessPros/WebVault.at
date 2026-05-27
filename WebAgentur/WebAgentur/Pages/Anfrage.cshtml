@@ -1,0 +1,321 @@
+@page
+@model WebAgentur.Pages.AnfragePageModel
+@{
+    ViewData["Title"] = "Projekt anfragen";
+    ViewData["TitleKey"] = "meta.requestTitle";
+    ViewData["BodyClass"] = "form-page";
+}
+
+@functions {
+    private bool IsChecked(IEnumerable<string> values, string value) => values.Contains(value);
+}
+
+<section class="request-page">
+    <div class="request-shell">
+        <div class="request-intro">
+            <p class="eyebrow" data-i18n="request.intro.eyebrow">Projektanfrage</p>
+            <h1 data-i18n="request.intro.title">Beschreiben Sie Ihr Vorhaben.</h1>
+            <p data-i18n="request.intro.text">Mit wenigen Angaben können wir einschätzen, welche Lösung zu Ihrem Unternehmen passt und wie der nächste Schritt aussieht.</p>
+        </div>
+
+        <form method="post" class="multi-step-form" id="anfrage-form" novalidate data-multi-step-form>
+            @Html.AntiForgeryToken()
+
+            <div class="form-topbar">
+                <span data-step-label data-i18n-template="request.progress">Schritt 1 / 5</span>
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" data-progress-bar></div>
+                </div>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="server-alert" asp-validation-summary="All"></div>
+            }
+
+            <div class="form-steps">
+                <section class="form-step is-active" data-step="1" aria-label="Paket-Auswahl" data-i18n-aria="request.step1.aria">
+                    <div class="step-heading">
+                        <span data-i18n="request.step1.label">Step 1</span>
+                        <h2 data-i18n="request.step1.title">Welche Leistung benötigen Sie?</h2>
+                    </div>
+
+                    <div class="choice-grid inquiry-choice-grid" data-choice-group>
+                        <label class="select-card @(Model.Input.Paket == "abo" ? "is-selected" : "")">
+                            <input type="radio" name="Input.Paket" value="abo" checked="@(Model.Input.Paket == "abo")" required />
+                            <span class="fake-check"></span>
+                            <strong data-i18n="request.step1.abo.title">Website-Abo</strong>
+                            <p data-i18n="request.step1.abo.text">Laufende Betreuung inklusive Hosting, Änderungen und technischem Support.</p>
+                        </label>
+
+                        <label class="select-card @(Model.Input.Paket == "fixpreis" ? "is-selected" : "")">
+                            <input type="radio" name="Input.Paket" value="fixpreis" checked="@(Model.Input.Paket == "fixpreis")" required />
+                            <span class="fake-check"></span>
+                            <strong data-i18n="request.step1.fixed.title">Fixpreis-Website</strong>
+                            <p data-i18n="request.step1.fixed.text">Ein klar abgegrenztes Projekt mit professioneller Übergabe.</p>
+                        </label>
+
+                        <label class="select-card @(Model.Input.Paket == "chatbot" ? "is-selected" : "")">
+                            <input type="radio" name="Input.Paket" value="chatbot" checked="@(Model.Input.Paket == "chatbot")" required />
+                            <span class="fake-check"></span>
+                            <strong>KI-Chatbot</strong>
+                            <p>FAQ-, Lead- oder Anfrage-Bot als Erweiterung für eine Website.</p>
+                        </label>
+
+                        <label class="select-card @(Model.Input.Paket == "beratung" ? "is-selected" : "")">
+                            <input type="radio" name="Input.Paket" value="beratung" checked="@(Model.Input.Paket == "beratung")" required />
+                            <span class="fake-check"></span>
+                            <strong data-i18n="request.step1.advice.title">Beratung gewünscht</strong>
+                            <p data-i18n="request.step1.advice.text">Wir empfehlen Ihnen nach kurzer Analyse den passenden Umfang.</p>
+                        </label>
+
+                        <label class="select-card @(Model.Input.Paket == "custom" ? "is-selected" : "")">
+                            <input type="radio" name="Input.Paket" value="custom" checked="@(Model.Input.Paket == "custom")" required />
+                            <span class="fake-check"></span>
+                            <strong>Custom Projekt</strong>
+                            <p>Individuelle Formulare, Buchungen, Automatisierungen oder Integrationen.</p>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="form-step" data-step="2" aria-label="Unternehmen" data-i18n-aria="request.step2.aria">
+                    <div class="step-heading">
+                        <span data-i18n="request.step2.label">Step 2</span>
+                        <h2 data-i18n="request.step2.title">Ihr Unternehmen</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <label class="field">
+                            <span data-i18n="request.fields.company">Unternehmensname</span>
+                            <input type="text" name="Input.Unternehmensname" value="@Model.Input.Unternehmensname" autocomplete="organization" required />
+                        </label>
+
+                        <label class="field">
+                            <span data-i18n="request.fields.industry">Branche / Tätigkeit</span>
+                            <input type="text" name="Input.Branche" value="@Model.Input.Branche" placeholder="Restaurant, Beratung, Handwerk..." data-i18n-placeholder="request.placeholders.industry" required />
+                        </label>
+
+                        <label class="field">
+                            <span data-i18n="request.fields.location">Standort / Stadt</span>
+                            <input type="text" name="Input.Standort" value="@Model.Input.Standort" autocomplete="address-level2" required />
+                        </label>
+
+                        <div class="field field-full">
+                            <span data-i18n="request.fields.hasWebsite">Gibt es bereits eine Website?</span>
+                            <div class="radio-row">
+                                <label><input type="radio" name="Input.WebsiteStatus" value="Ja" checked="@(Model.Input.WebsiteStatus == "Ja")" required /> <span data-i18n="common.yes">Ja</span></label>
+                                <label><input type="radio" name="Input.WebsiteStatus" value="Nein" checked="@(Model.Input.WebsiteStatus == "Nein")" required /> <span data-i18n="common.no">Nein</span></label>
+                                <label><input type="radio" name="Input.WebsiteStatus" value="War mal" checked="@(Model.Input.WebsiteStatus == "War mal")" required /> <span data-i18n="request.fields.usedTo">Früher</span></label>
+                            </div>
+                        </div>
+
+                        <label class="field field-full">
+                            <span data-i18n="request.fields.currentUrl">Aktuelle URL</span>
+                            <input type="url" name="Input.AktuelleUrl" value="@Model.Input.AktuelleUrl" placeholder="https://ihre-website.at" data-i18n-placeholder="request.placeholders.url" />
+                        </label>
+                    </div>
+                </section>
+
+                <section class="form-step" data-step="3" aria-label="Website-Vorstellungen" data-i18n-aria="request.step3.aria">
+                    <div class="step-heading">
+                        <span data-i18n="request.step3.label">Step 3</span>
+                        <h2 data-i18n="request.step3.title">Anforderungen an die Website</h2>
+                    </div>
+
+                    <div class="form-block">
+                        <span class="block-label" data-i18n="request.sections.label">Gewünschte Unterseiten</span>
+                        <div class="checkbox-grid" data-min-checks="1" data-group-name="Unterseiten">
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Startseite" checked="@IsChecked(Model.Input.GewaelteSections, "Startseite")" /> <span data-i18n="request.sections.home">Startseite</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Über uns" checked="@IsChecked(Model.Input.GewaelteSections, "Über uns")" /> <span data-i18n="request.sections.about">Über uns</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Leistungen" checked="@IsChecked(Model.Input.GewaelteSections, "Leistungen")" /> <span data-i18n="request.sections.services">Leistungen</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Preise" checked="@IsChecked(Model.Input.GewaelteSections, "Preise")" /> <span data-i18n="request.sections.pricing">Preise</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Galerie" checked="@IsChecked(Model.Input.GewaelteSections, "Galerie")" /> <span data-i18n="request.sections.gallery">Galerie</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Kontakt" checked="@IsChecked(Model.Input.GewaelteSections, "Kontakt")" /> <span data-i18n="request.sections.contact">Kontakt</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Impressum" checked="@IsChecked(Model.Input.GewaelteSections, "Impressum")" /> <span data-i18n="request.sections.imprint">Impressum</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Blog" checked="@IsChecked(Model.Input.GewaelteSections, "Blog")" /> <span data-i18n="request.sections.blog">Blog</span></label>
+                            <label><input type="checkbox" name="Input.GewaelteSections" value="Shop" checked="@IsChecked(Model.Input.GewaelteSections, "Shop")" /> <span data-i18n="request.sections.shop">Shop</span></label>
+                        </div>
+                        <label class="field compact-field">
+                            <span data-i18n="request.sections.custom">Eigene Seite</span>
+                            <input type="text" name="Input.EigeneSeite" value="@Model.Input.EigeneSeite" placeholder="z. B. Team, Kurse, Speisekarte..." data-i18n-placeholder="request.placeholders.customPage" />
+                        </label>
+                    </div>
+
+                    <label class="field">
+                        <span data-i18n="request.fields.references">Referenz-Websites</span>
+                        <textarea name="Input.ReferenzWebsites" rows="4" placeholder="Links oder kurze Beschreibung: Was gefällt Ihnen an diesen Websites?" data-i18n-placeholder="request.placeholders.references">@Model.Input.ReferenzWebsites</textarea>
+                    </label>
+
+                    <div class="form-block">
+                        <span class="block-label" data-i18n="request.style.label">Stilrichtung</span>
+                        <div class="style-grid" data-choice-group>
+                            <label class="style-card @(Model.Input.Farbstil == "Hell & Clean" ? "is-selected" : "")">
+                                <input type="radio" name="Input.Farbstil" value="Hell & Clean" checked="@(Model.Input.Farbstil == "Hell & Clean")" required />
+                                <span class="swatch swatch-light"></span>
+                                <strong data-i18n="request.style.light">Hell & clean</strong>
+                            </label>
+                            <label class="style-card @(Model.Input.Farbstil == "Dunkel & Premium" ? "is-selected" : "")">
+                                <input type="radio" name="Input.Farbstil" value="Dunkel & Premium" checked="@(Model.Input.Farbstil == "Dunkel & Premium")" required />
+                                <span class="swatch swatch-dark"></span>
+                                <strong data-i18n="request.style.dark">Dunkel & hochwertig</strong>
+                            </label>
+                            <label class="style-card @(Model.Input.Farbstil == "Bunt & Kreativ" ? "is-selected" : "")">
+                                <input type="radio" name="Input.Farbstil" value="Bunt & Kreativ" checked="@(Model.Input.Farbstil == "Bunt & Kreativ")" required />
+                                <span class="swatch swatch-color"></span>
+                                <strong data-i18n="request.style.creative">Kreativ & markant</strong>
+                            </label>
+                            <label class="style-card @(Model.Input.Farbstil == "Weiß & Minimalistisch" ? "is-selected" : "")">
+                                <input type="radio" name="Input.Farbstil" value="Weiß & Minimalistisch" checked="@(Model.Input.Farbstil == "Weiß & Minimalistisch")" required />
+                                <span class="swatch swatch-minimal"></span>
+                                <strong data-i18n="request.style.minimal">Minimalistisch</strong>
+                            </label>
+                            <label class="style-card @(Model.Input.Farbstil == "Keine Präferenz" ? "is-selected" : "")">
+                                <input type="radio" name="Input.Farbstil" value="Keine Präferenz" checked="@(Model.Input.Farbstil == "Keine Präferenz")" required />
+                                <span class="swatch swatch-neutral"></span>
+                                <strong data-i18n="request.style.none">Keine Präferenz</strong>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-block">
+                        <span class="block-label" data-i18n="request.features.label">Gewünschte Funktionen</span>
+                        <div class="checkbox-grid">
+                            <label><input type="checkbox" name="Input.Funktionen" value="Online-Terminbuchung" checked="@IsChecked(Model.Input.Funktionen, "Online-Terminbuchung")" /> <span data-i18n="request.features.booking">Online-Terminbuchung</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Kontaktformular" checked="@IsChecked(Model.Input.Funktionen, "Kontaktformular")" /> <span data-i18n="request.features.form">Kontaktformular</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Galerie/Portfolio" checked="@IsChecked(Model.Input.Funktionen, "Galerie/Portfolio")" /> <span data-i18n="request.features.gallery">Galerie / Portfolio</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Google Maps" checked="@IsChecked(Model.Input.Funktionen, "Google Maps")" /> <span data-i18n="request.features.maps">Google Maps</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Social Media Links" checked="@IsChecked(Model.Input.Funktionen, "Social Media Links")" /> <span data-i18n="request.features.social">Social Media Links</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Newsletter" checked="@IsChecked(Model.Input.Funktionen, "Newsletter")" /> <span data-i18n="request.features.newsletter">Newsletter</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Online-Shop" checked="@IsChecked(Model.Input.Funktionen, "Online-Shop")" /> <span data-i18n="request.features.shop">Online-Shop</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="KI-Chatbot" checked="@IsChecked(Model.Input.Funktionen, "KI-Chatbot")" /> <span data-i18n="request.features.chatbot">KI-Chatbot</span></label>
+                            <label><input type="checkbox" name="Input.Funktionen" value="Mehrsprachig" checked="@IsChecked(Model.Input.Funktionen, "Mehrsprachig")" /> <span data-i18n="request.features.multi">Mehrsprachigkeit</span></label>
+                        </div>
+                        <label class="field compact-field">
+                            <span data-i18n="request.features.other">Sonstiges</span>
+                            <input type="text" name="Input.SonstigeFunktion" value="@Model.Input.SonstigeFunktion" placeholder="z. B. Login, Downloads, Bewerbungen..." data-i18n-placeholder="request.placeholders.otherFeature" />
+                        </label>
+                    </div>
+                </section>
+
+                <section class="form-step" data-step="4" aria-label="Zusätzliche Services" data-i18n-aria="request.step4.aria">
+                    <div class="step-heading">
+                        <span data-i18n="request.step4.label">Step 4</span>
+                        <h2 data-i18n="request.step4.title">Zusätzliche Services</h2>
+                    </div>
+
+                    <div class="form-block">
+                        <span class="block-label" data-i18n="request.chatbot.question">Soll ein KI-Chatbot integriert werden?</span>
+                        <div class="radio-column" data-chatbot-choice>
+                            <label><input type="radio" name="Input.ChatbotWunsch" value="Ja, interessiert mich" checked="@(Model.Input.ChatbotWunsch == "Ja, interessiert mich")" required /> <span data-i18n="request.chatbot.yes">Ja, das ist interessant</span></label>
+                            <label><input type="radio" name="Input.ChatbotWunsch" value="Nein danke" checked="@(Model.Input.ChatbotWunsch == "Nein danke")" required /> <span data-i18n="request.chatbot.no">Nein, aktuell nicht</span></label>
+                            <label><input type="radio" name="Input.ChatbotWunsch" value="Ich möchte mehr Infos dazu" checked="@(Model.Input.ChatbotWunsch == "Ich möchte mehr Infos dazu")" required /> <span data-i18n="request.chatbot.info">Bitte weitere Informationen senden</span></label>
+                        </div>
+                    </div>
+
+                    <div class="conditional-panel @(Model.Input.ChatbotDetailsGewuenscht ? "is-visible" : "")" data-chatbot-details>
+                        <div class="form-block">
+                            <span class="block-label" data-i18n="request.chatbot.capabilities">Was soll der Bot leisten?</span>
+                            <div class="checkbox-grid">
+                                <label><input type="checkbox" name="Input.ChatbotFaehigkeiten" value="Kundenfragen beantworten" checked="@IsChecked(Model.Input.ChatbotFaehigkeiten, "Kundenfragen beantworten")" /> <span data-i18n="request.chatbot.cap1">Kundenfragen beantworten</span></label>
+                                <label><input type="checkbox" name="Input.ChatbotFaehigkeiten" value="Termine buchen" checked="@IsChecked(Model.Input.ChatbotFaehigkeiten, "Termine buchen")" /> <span data-i18n="request.chatbot.cap2">Termine vorbereiten</span></label>
+                                <label><input type="checkbox" name="Input.ChatbotFaehigkeiten" value="Produkte vorstellen" checked="@IsChecked(Model.Input.ChatbotFaehigkeiten, "Produkte vorstellen")" /> <span data-i18n="request.chatbot.cap3">Leistungen oder Produkte erklären</span></label>
+                                <label><input type="checkbox" name="Input.ChatbotFaehigkeiten" value="Öffnungszeiten" checked="@IsChecked(Model.Input.ChatbotFaehigkeiten, "Öffnungszeiten")" /> <span data-i18n="request.chatbot.cap4">Öffnungszeiten nennen</span></label>
+                                <label><input type="checkbox" name="Input.ChatbotFaehigkeiten" value="Weiteres" checked="@IsChecked(Model.Input.ChatbotFaehigkeiten, "Weiteres")" /> <span data-i18n="request.chatbot.cap5">Weitere Aufgaben</span></label>
+                            </div>
+                        </div>
+
+                        <label class="field">
+                            <span data-i18n="request.chatbot.description">Kurzbeschreibung des Chatbots</span>
+                            <textarea name="Input.ChatbotBeschreibung" rows="4" placeholder="Welche Fragen oder Abläufe soll der Chatbot unterstützen?" data-i18n-placeholder="request.placeholders.chatbot">@Model.Input.ChatbotBeschreibung</textarea>
+                        </label>
+                    </div>
+
+                    <div class="form-block">
+                        <span class="block-label" data-i18n="request.hosting.question">Wie soll das Hosting organisiert werden?</span>
+                        <div class="radio-column">
+                            <label><input type="radio" name="Input.HostingPraeferenz" value="Ihr richtet alles ein" checked="@(Model.Input.HostingPraeferenz == "Ihr richtet alles ein")" required /> <span data-i18n="request.hosting.full">Sie richten alles ein (empfohlen)</span></label>
+                            <label><input type="radio" name="Input.HostingPraeferenz" value="Ich habe bereits Hosting" checked="@(Model.Input.HostingPraeferenz == "Ich habe bereits Hosting")" required /> <span data-i18n="request.hosting.own">Es gibt bereits Hosting</span></label>
+                            <label><input type="radio" name="Input.HostingPraeferenz" value="Bitte beraten" checked="@(Model.Input.HostingPraeferenz == "Bitte beraten")" required /> <span data-i18n="request.hosting.advice">Bitte beraten Sie uns dazu</span></label>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="form-step" data-step="5" aria-label="Kontakt und Abschluss" data-i18n-aria="request.step5.aria">
+                    <div class="step-heading">
+                        <span data-i18n="request.step5.label">Step 5</span>
+                        <h2 data-i18n="request.step5.title">Kontakt & Abschluss</h2>
+                    </div>
+
+                    <div class="form-grid">
+                        <label class="field">
+                            <span data-i18n="request.fields.name">Ihr Name</span>
+                            <input type="text" name="Input.Name" value="@Model.Input.Name" autocomplete="name" required />
+                        </label>
+
+                        <label class="field">
+                            <span data-i18n="request.fields.email">E-Mail-Adresse</span>
+                            <input type="email" name="Input.Email" value="@Model.Input.Email" autocomplete="email" required />
+                        </label>
+
+                        <label class="field">
+                            <span data-i18n="request.fields.phone">Telefon</span>
+                            <input type="tel" name="Input.Telefon" value="@Model.Input.Telefon" autocomplete="tel" />
+                        </label>
+
+                        <label class="field">
+                            <span data-i18n="request.fields.contactTime">Bevorzugte Kontaktzeit</span>
+                            <select name="Input.KontaktZeit" required>
+                                <option value="" data-i18n="common.pleaseSelect">Bitte wählen</option>
+                                <option value="Morgens" selected="@(Model.Input.KontaktZeit == "Morgens")" data-i18n="request.contact.morning">Morgens</option>
+                                <option value="Mittags" selected="@(Model.Input.KontaktZeit == "Mittags")" data-i18n="request.contact.noon">Mittags</option>
+                                <option value="Nachmittags" selected="@(Model.Input.KontaktZeit == "Nachmittags")" data-i18n="request.contact.afternoon">Nachmittags</option>
+                                <option value="Abends" selected="@(Model.Input.KontaktZeit == "Abends")" data-i18n="request.contact.evening">Abends</option>
+                                <option value="Egal" selected="@(Model.Input.KontaktZeit == "Egal")" data-i18n="request.contact.any">Egal</option>
+                            </select>
+                        </label>
+
+                        <label class="field field-full">
+                            <span data-i18n="request.fields.budget">Budget-Vorstellung</span>
+                            <select name="Input.Budget" required>
+                                <option value="" data-i18n="common.pleaseSelect">Bitte wählen</option>
+                                <option value="Unter 200€" selected="@(Model.Input.Budget == "Unter 200€")" data-i18n="request.budget.under200">Unter 200 €</option>
+                                <option value="200–500€" selected="@(Model.Input.Budget == "200–500€")" data-i18n="request.budget.200500">200-500 €</option>
+                                <option value="500–1000€" selected="@(Model.Input.Budget == "500–1000€")" data-i18n="request.budget.5001000">500-1000 €</option>
+                                <option value="Über 1000€" selected="@(Model.Input.Budget == "Über 1000€")" data-i18n="request.budget.over1000">Über 1000 €</option>
+                                <option value="Monatliches Abo bevorzugt" selected="@(Model.Input.Budget == "Monatliches Abo bevorzugt")" data-i18n="request.budget.subscription">Monatliches Abo bevorzugt</option>
+                                <option value="Noch unklar" selected="@(Model.Input.Budget == "Noch unklar")" data-i18n="request.budget.unclear">Noch unklar</option>
+                            </select>
+                        </label>
+
+                        <label class="field field-full">
+                            <span data-i18n="request.fields.notes">Weitere Anmerkungen</span>
+                            <textarea name="Input.Anmerkungen" rows="4" placeholder="Alles, was für die Einschätzung hilfreich sein könnte." data-i18n-placeholder="request.placeholders.notes">@Model.Input.Anmerkungen</textarea>
+                        </label>
+                    </div>
+
+                    <div class="consent-list">
+                        <label>
+                            <input type="checkbox" name="Input.DatenschutzOk" value="true" checked="@Model.Input.DatenschutzOk" required />
+                            <input type="hidden" name="Input.DatenschutzOk" value="false" />
+                            <span data-i18n="request.consent.privacy">Ich stimme der Datenschutzerklärung zu.</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="Input.PortfolioOk" value="true" checked="@Model.Input.PortfolioOk" />
+                            <input type="hidden" name="Input.PortfolioOk" value="false" />
+                            <span data-i18n="request.consent.portfolio">Die fertige Website darf nach Abstimmung als Referenz verwendet werden.</span>
+                        </label>
+                    </div>
+                </section>
+            </div>
+
+            <div class="form-navigation">
+                <button class="button button-ghost" type="button" data-prev-step data-i18n="common.back">Zurück</button>
+                <button class="button button-gold" type="button" data-next-step data-i18n="common.next">Weiter</button>
+                <button class="button button-gold submit-button" type="submit" data-submit-button>
+                    <span data-i18n="request.submit">Anfrage absenden</span>
+                    <span class="button-spinner" aria-hidden="true"></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

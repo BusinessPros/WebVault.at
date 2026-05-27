@@ -1,0 +1,144 @@
+@{
+    var pageTitle = Convert.ToString(ViewData["Title"]);
+    var title = string.IsNullOrWhiteSpace(pageTitle)
+        ? "Moderne Websites für lokale Unternehmen"
+        : pageTitle;
+    var fullTitle = title.Contains("[PROJEKTNAME]", StringComparison.OrdinalIgnoreCase)
+        ? title
+        : $"{title} | [PROJEKTNAME]";
+    var description = Convert.ToString(ViewData["Description"]);
+    if (string.IsNullOrWhiteSpace(description))
+    {
+        description = "Websites, Hosting-Einrichtung, laufende Betreuung und KI-Chatbots für lokale Unternehmen, Restaurants, Vereine und Dienstleister.";
+    }
+
+    var bodyClass = Convert.ToString(ViewData["BodyClass"]);
+    var request = Context.Request;
+    var canonical = $"{request.Scheme}://{request.Host}{request.PathBase}{request.Path}";
+}
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="@description" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_AT" />
+    <meta property="og:title" content="@fullTitle" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:url" content="@canonical" />
+    <title>@fullTitle</title>
+    <link rel="canonical" href="@canonical" />
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("wa-theme");
+            const preferredTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+            const theme = savedTheme || preferredTheme;
+            document.documentElement.dataset.theme = theme;
+            document.documentElement.style.colorScheme = theme;
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="@bodyClass">
+    <header class="site-nav" id="site-nav">
+        <a class="brand" asp-page="/Index" aria-label="[PROJEKTNAME] Startseite">[PROJEKTNAME]</a>
+
+        <nav class="desktop-nav" aria-label="Hauptnavigation">
+            <a asp-page="/Leistungen">Leistungen</a>
+            <a asp-page="/Angebote">Preise</a>
+            <a asp-page="/Portfolio">Beispiele</a>
+            <a asp-page="/KiChatbots">KI-Chatbots</a>
+            <a asp-page="/Beratung">Beratung</a>
+            <a asp-page="/UeberUns">Über uns</a>
+            <a asp-page="/Kontakt">Kontakt</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="theme-toggle" type="button" data-theme-toggle aria-label="Farbschema wechseln">
+                <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2v2"></path>
+                    <path d="M12 20v2"></path>
+                    <path d="m4.93 4.93 1.41 1.41"></path>
+                    <path d="m17.66 17.66 1.41 1.41"></path>
+                    <path d="M2 12h2"></path>
+                    <path d="M20 12h2"></path>
+                    <path d="m6.34 17.66-1.41 1.41"></path>
+                    <path d="m19.07 4.93-1.41 1.41"></path>
+                </svg>
+                <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M20 14.4A7.8 7.8 0 0 1 9.6 4a8 8 0 1 0 10.4 10.4Z"></path>
+                </svg>
+            </button>
+
+            <a class="button button-small button-gold nav-cta" asp-page="/Kontakt">Kostenlos anfragen</a>
+            <button class="mobile-nav-toggle" type="button" aria-label="Menü öffnen" aria-controls="mobile-menu" aria-expanded="false" data-mobile-toggle>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile Navigation" data-mobile-menu>
+        <a asp-page="/Leistungen">Leistungen</a>
+        <a asp-page="/Angebote">Preise</a>
+        <a asp-page="/Portfolio">Beispiele</a>
+        <a asp-page="/KiChatbots">KI-Chatbots</a>
+        <a asp-page="/Beratung">Beratung</a>
+        <a asp-page="/UeberUns">Über uns</a>
+        <a asp-page="/Kontakt">Kontakt</a>
+        <a class="button button-gold" asp-page="/Kontakt">Kostenlos anfragen</a>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="brand" asp-page="/Index">[PROJEKTNAME]</a>
+                <p>Moderne Websites, Hosting-Einrichtung, laufende Betreuung und KI-Chatbots für lokale Unternehmen in [REGION].</p>
+            </div>
+
+            <nav class="footer-links" aria-label="Leistungslinks">
+                <a asp-page="/Leistungen">Leistungen</a>
+                <a asp-page="/Angebote">Angebotsübersicht</a>
+                <a asp-page="/Portfolio">Beispiele</a>
+                <a asp-page="/KiChatbots">KI-Chatbots</a>
+                <a asp-page="/Beratung">Beratung</a>
+            </nav>
+
+            <nav class="footer-links" aria-label="Kontakt und Rechtliches">
+                <a asp-page="/UeberUns">Über uns</a>
+                <a asp-page="/Kontakt">Kontakt</a>
+                <a asp-page="/Impressum">Impressum</a>
+                <a asp-page="/Datenschutz">Datenschutz</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 [PROJEKTNAME]. Alle Rechte vorbehalten.</p>
+            <p>Bernhard und Lukas · persönliche Weblösungen für lokale Betriebe.</p>
+        </div>
+    </footer>
+
+    <script src="~/js/vendor/gsap.min.js" asp-append-version="true"></script>
+    <script src="~/js/vendor/ScrollTrigger.min.js" asp-append-version="true"></script>
+    <script src="~/js/splittext-lite.js" asp-append-version="true"></script>
+    <script src="~/js/vendor/lenis.min.js" asp-append-version="true"></script>
+    <script src="~/js/i18n-theme.js" asp-append-version="true"></script>
+    <script src="~/js/animations.js" asp-append-version="true"></script>
+    <script src="~/js/form.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

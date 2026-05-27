@@ -1,0 +1,20 @@
+@page "/danke"
+@model WebAgentur.Pages.DankeModel
+@{
+    ViewData["Title"] = "Danke";
+    ViewData["Description"] = "Vielen Dank für Ihre Anfrage.";
+    ViewData["BodyClass"] = "thanks-page";
+}
+
+<section class="thanks-section">
+    <div class="thanks-card">
+        <svg class="checkmark" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52"></circle>
+            <path data-check-path d="M36 62l16 16 34-39"></path>
+        </svg>
+        <p class="eyebrow">Anfrage gesendet</p>
+        <h1>Vielen Dank für Ihre Anfrage.</h1>
+        <p>Wir melden uns mit einer ersten Einschätzung bei Ihnen.</p>
+        <a class="button button-gold button-large" asp-page="/Index">Zurück zur Startseite</a>
+    </div>
+</section>

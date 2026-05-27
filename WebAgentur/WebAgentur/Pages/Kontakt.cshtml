@@ -1,0 +1,95 @@
+@page "/kontakt"
+@model WebAgentur.Pages.KontaktPageModel
+@{
+    ViewData["Title"] = "Kontakt aufnehmen";
+    ViewData["Description"] = "Kontakt für Website-Abo, Website zum Fixpreis, KI-Chatbot, Beratung und Custom Projekte für lokale Unternehmen.";
+    ViewData["BodyClass"] = "contact-page";
+}
+
+<section class="page-hero compact-hero">
+    <div class="section-inner split-layout">
+        <div>
+            <p class="eyebrow">Kontakt</p>
+            <h1>Kontakt aufnehmen</h1>
+            <p class="lead">Schreiben Sie uns kurz, was Sie brauchen. Wir melden uns mit einer ersten Einschätzung und einem passenden Vorschlag.</p>
+            <div class="contact-options">
+                <span>[E-MAIL]</span>
+                <span>[TELEFON]</span>
+                <span>[REGION]</span>
+            </div>
+        </div>
+        <div class="notice-card">
+            <h2>Unverbindliche Anfrage</h2>
+            <p>Die Anfrage ist unverbindlich. Das Formular speichert Ihre Angaben lokal im Projekt, damit wir Ihre Anfrage bearbeiten können. Vor Veröffentlichung müssen Datenschutz und finale Kontaktwege geprüft werden.</p>
+        </div>
+    </div>
+</section>
+
+<section class="wide-section">
+    <div class="section-inner contact-layout">
+        <form method="post" class="contact-form" novalidate>
+            @Html.AntiForgeryToken()
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="server-alert" asp-validation-summary="All"></div>
+            }
+
+            <div class="form-grid">
+                <label class="field">
+                    <span>Name</span>
+                    <input asp-for="Input.Name" autocomplete="name" required />
+                </label>
+
+                <label class="field">
+                    <span>Unternehmen</span>
+                    <input asp-for="Input.Unternehmen" autocomplete="organization" />
+                </label>
+
+                <label class="field">
+                    <span>E-Mail</span>
+                    <input asp-for="Input.Email" autocomplete="email" required />
+                </label>
+
+                <label class="field">
+                    <span>Telefonnummer optional</span>
+                    <input asp-for="Input.Telefon" autocomplete="tel" />
+                </label>
+
+                <label class="field field-full">
+                    <span>Gewünschte Leistung</span>
+                    <select asp-for="Input.Leistung" required>
+                        <option value="">Bitte wählen</option>
+                        <option>Website-Abo</option>
+                        <option>Website zum Fixpreis</option>
+                        <option>KI-Chatbot</option>
+                        <option>Beratung</option>
+                        <option>Custom Projekt</option>
+                    </select>
+                </label>
+
+                <label class="field field-full">
+                    <span>Nachricht</span>
+                    <textarea asp-for="Input.Nachricht" rows="7" placeholder="Worum geht es? Gibt es bereits eine Website? Welche Ziele oder Funktionen sind wichtig?" required></textarea>
+                </label>
+            </div>
+
+            <div class="form-footer">
+                <p>Die Anfrage ist unverbindlich.</p>
+                <button class="button button-gold button-large" type="submit">Anfrage senden</button>
+            </div>
+        </form>
+
+        <aside class="contact-side">
+            <h2>Hilfreiche Angaben</h2>
+            <ul class="check-list">
+                <li>Branche und Standort</li>
+                <li>bestehende Website, falls vorhanden</li>
+                <li>gewünschtes Modell: Abo, Fixpreis, KI oder Beratung</li>
+                <li>ungefährer Zeitrahmen</li>
+                <li>besondere Funktionen oder Inhalte</li>
+            </ul>
+            <a class="text-link" asp-page="/Anfrage">Alternativ ausführliche Projektanfrage öffnen</a>
+        </aside>
+    </div>
+</section>

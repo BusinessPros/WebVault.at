@@ -1,0 +1,128 @@
+@page "/angebote"
+@{
+    ViewData["Title"] = "Angebotsübersicht";
+    ViewData["Description"] = "Website-Abo, einmalige Website-Erstellung, Beratung, KI-Chatbots und Custom Lösungen für lokale Unternehmen.";
+}
+
+<section class="page-hero compact-hero">
+    <div class="section-inner">
+        <p class="eyebrow">Preise & Modelle</p>
+        <h1>Angebotsübersicht</h1>
+        <p class="lead">Ob monatlich betreute Website, einmalige Erstellung oder individuelle Lösung: Wir bieten flexible Modelle für lokale Unternehmen.</p>
+        <div class="hero-badges">
+            <span>Website-Abo</span>
+            <span>Fixpreis-Projekte</span>
+            <span>KI-Chatbots</span>
+            <span>Beratung</span>
+        </div>
+    </div>
+</section>
+
+<section class="wide-section" id="website-abo">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <p class="eyebrow">Website-Abo</p>
+                <h2>Eine komplett betreute Website zum monatlichen Fixpreis.</h2>
+            </div>
+            <p>Ideal für Unternehmen, die sich nicht selbst um Technik, Hosting und kleine Änderungen kümmern möchten.</p>
+        </div>
+
+        <div class="pricing-grid offer-grid">
+            @foreach (var package in SiteContent.PricingPackages)
+            {
+                <article class="pricing-card @(package.Slug == "business" ? "pricing-card-featured" : "")" id="@package.Slug">
+                    @if (package.Slug == "business")
+                    {
+                        <span class="featured-badge">Häufig passend</span>
+                    }
+                    <div>
+                        <p class="pricing-label">@package.Name</p>
+                        <h3>@package.MonthlyPrice</h3>
+                        <p>@package.AlternativePrice</p>
+                    </div>
+                    <p><strong>Geeignet für:</strong> @package.SuitableFor</p>
+                    <ul>
+                        @foreach (var item in package.Includes)
+                        {
+                            <li>@item</li>
+                        }
+                    </ul>
+                    <a class="button @(package.Slug == "business" ? "button-gold" : "button-ghost")" asp-page="/Kontakt">Paket anfragen</a>
+                </article>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="wide-section section-alt" id="fixpreis">
+    <div class="section-inner split-layout">
+        <div>
+            <p class="eyebrow">Einmalige Website-Erstellung</p>
+            <h2>Websites auch ohne monatliches Abo.</h2>
+            <p class="lead">Für Kunden, die kein monatliches Abo möchten, erstellen wir Websites auch zum einmaligen Fixpreis. Die Übergabe kann je nach Projekt als ZIP-Datei, GitHub-Repository oder deployte Website erfolgen.</p>
+            <p class="fineprint">Die finalen Kosten hängen vom Umfang, den Funktionen und den gewünschten Inhalten ab.</p>
+        </div>
+        <div class="price-list">
+            <div><span>einfache Website</span><strong>ab 799 €</strong></div>
+            <div><span>Business Website</span><strong>ab 1.499 €</strong></div>
+            <div><span>individuelle größere Website</span><strong>ab 3.000 €</strong></div>
+        </div>
+    </div>
+</section>
+
+<section class="wide-section" id="beratung">
+    <div class="section-inner split-layout">
+        <div>
+            <p class="eyebrow">Beratung</p>
+            <h2>Klare Einschätzung vor technischen Entscheidungen.</h2>
+            <p class="lead">Wir beraten zu Websites, Domains, Hosting, Tools, SEO-Basics, KI-Funktionen und digitalen Lösungen.</p>
+        </div>
+        <div class="notice-card">
+            <h3>Beratung: ab 49 €/Stunde</h3>
+            <p>Termine nach Vereinbarung. Da wir unsere Projekte neben Schule und Alltag umsetzen, werden Beratungs- und Projekttermine klar geplant und abgestimmt.</p>
+        </div>
+    </div>
+</section>
+
+<section class="wide-section section-alt" id="ki-chatbots">
+    <div class="section-inner">
+        <div class="section-header">
+            <div>
+                <p class="eyebrow">KI-Chatbots</p>
+                <h2>FAQ-, Lead- und Custom-Bots für Websites</h2>
+            </div>
+            <p>KI-Chatbots können wiederkehrende Fragen beantworten, Anfragen sammeln und Besucher schneller zu passenden Informationen führen.</p>
+        </div>
+        <div class="three-card-grid">
+            <article class="content-card">
+                <span class="card-kicker">ab 49 €/Monat + Setup</span>
+                <h3>FAQ-Bot</h3>
+                <p>Beantwortet häufige Fragen auf Basis bereitgestellter Informationen.</p>
+            </article>
+            <article class="content-card">
+                <span class="card-kicker">ab 99 €/Monat + Setup</span>
+                <h3>Lead-Bot</h3>
+                <p>Sammelt Kundenanfragen, Namen, Kontaktdaten und Anliegen.</p>
+            </article>
+            <article class="content-card">
+                <span class="card-kicker">individuelles Angebot</span>
+                <h3>Custom-Bot</h3>
+                <p>Für komplexere Integrationen, Datenbanken, Buchungssysteme oder spezielle Abläufe.</p>
+            </article>
+        </div>
+        <p class="notice-inline">KI-Chatbots ersetzen keine rechtliche, medizinische oder verbindliche Fachberatung. Antworten können je nach Projekt begrenzt und geprüft werden.</p>
+    </div>
+</section>
+
+<section class="wide-section" id="custom">
+    <div class="section-inner cta-band">
+        <div>
+            <p class="eyebrow">Custom Lösungen</p>
+            <h2>Nicht jedes Projekt passt in ein Standardpaket.</h2>
+            <p>Deshalb bieten wir individuelle Lösungen nach Bedarf an, zum Beispiel spezielle Formulare, Buchungsfunktionen, CMS, Automatisierungen oder individuelle Integrationen.</p>
+            <p class="fineprint">Alle Preise sind Richtwerte. Der tatsächliche Preis hängt vom Umfang, den gewünschten Funktionen, der laufenden Betreuung und externen Kosten wie Domain, Hosting, E-Mail, KI-API oder Drittanbieter-Tools ab. Preise nach finaler rechtlicher Abwicklung.</p>
+        </div>
+        <a class="button button-gold button-large" asp-page="/Kontakt">Individuelles Angebot anfragen</a>
+    </div>
+</section>
