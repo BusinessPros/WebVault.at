@@ -1,26 +1,163 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-vault-ink: var(--vault-ink);
+  --color-vault-paper: var(--vault-paper);
+  --color-vault-gold: var(--vault-gold);
+  --color-vault-line: var(--vault-line);
+  --color-vault-cyan: var(--vault-cyan);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.985 0.006 82);
+  --foreground: oklch(0.16 0.015 248);
+  --card: oklch(0.99 0.004 82);
+  --card-foreground: oklch(0.16 0.015 248);
+  --popover: oklch(0.99 0.004 82);
+  --popover-foreground: oklch(0.16 0.015 248);
+  --primary: oklch(0.17 0.016 248);
+  --primary-foreground: oklch(0.985 0.006 82);
+  --secondary: oklch(0.94 0.008 82);
+  --secondary-foreground: oklch(0.18 0.017 248);
+  --muted: oklch(0.92 0.007 82);
+  --muted-foreground: oklch(0.44 0.017 248);
+  --accent: oklch(0.81 0.1 82);
+  --accent-foreground: oklch(0.18 0.017 248);
+  --destructive: oklch(0.58 0.21 27);
+  --border: oklch(0.84 0.009 82);
+  --input: oklch(0.84 0.009 82);
+  --ring: oklch(0.72 0.096 82);
+  --vault-ink: oklch(0.13 0.012 248);
+  --vault-paper: oklch(0.97 0.011 83);
+  --vault-gold: oklch(0.82 0.1 82);
+  --vault-line: oklch(0.65 0.03 82);
+  --vault-cyan: oklch(0.78 0.095 205);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: oklch(0.09 0.012 248);
+  --foreground: oklch(0.96 0.007 82);
+  --card: oklch(0.13 0.014 248);
+  --card-foreground: oklch(0.96 0.007 82);
+  --popover: oklch(0.13 0.014 248);
+  --popover-foreground: oklch(0.96 0.007 82);
+  --primary: oklch(0.88 0.068 82);
+  --primary-foreground: oklch(0.11 0.014 248);
+  --secondary: oklch(0.18 0.015 248);
+  --secondary-foreground: oklch(0.96 0.007 82);
+  --muted: oklch(0.2 0.014 248);
+  --muted-foreground: oklch(0.68 0.018 82);
+  --accent: oklch(0.82 0.1 82);
+  --accent-foreground: oklch(0.11 0.014 248);
+  --destructive: oklch(0.64 0.19 27);
+  --border: oklch(0.29 0.018 248);
+  --input: oklch(0.25 0.016 248);
+  --ring: oklch(0.78 0.095 82);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--vault-ink);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--vault-gold), transparent 25%);
+    color: var(--vault-ink);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .hairline {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--vault-line), transparent 15%),
+      transparent
+    );
+  }
+
+  .vault-grid {
+    background-image:
+      linear-gradient(color-mix(in oklab, white, transparent 94%) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, white, transparent 94%) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    min-width: max-content;
+    animation: marquee 34s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation-duration: 46s;
+  }
 }
