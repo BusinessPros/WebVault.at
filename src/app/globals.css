@@ -84,6 +84,11 @@
   --border: oklch(0.29 0.018 248);
   --input: oklch(0.25 0.016 248);
   --ring: oklch(0.78 0.095 82);
+  --vault-ink: oklch(0.09 0.012 248);
+  --vault-paper: oklch(0.13 0.014 248);
+  --vault-gold: oklch(0.84 0.104 82);
+  --vault-line: oklch(0.54 0.036 82);
+  --vault-cyan: oklch(0.76 0.1 205);
 }
 
 @layer base {
@@ -100,6 +105,7 @@
     @apply bg-background text-foreground;
     min-height: 100vh;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    text-rendering: geometricPrecision;
   }
 
   ::selection {
@@ -113,6 +119,82 @@
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
   }
 
+  .section-band {
+    @apply relative overflow-hidden bg-background text-foreground;
+  }
+
+  .surface-panel {
+    @apply rounded-lg border border-border bg-card text-card-foreground shadow-2xl shadow-black/5;
+  }
+
+  .interactive-card {
+    @apply relative overflow-hidden rounded-lg border border-border bg-card text-card-foreground transition duration-300;
+  }
+
+  .interactive-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform: translateX(-120%) skewX(-18deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--vault-gold), transparent 88%),
+      transparent
+    );
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--vault-gold), transparent 40%);
+    box-shadow:
+      0 24px 70px color-mix(in oklab, black, transparent 90%),
+      0 0 36px color-mix(in oklab, var(--vault-gold), transparent 84%);
+  }
+
+  .interactive-card:hover::before {
+    transform: translateX(120%) skewX(-18deg);
+  }
+
+  .link-trace {
+    position: relative;
+  }
+
+  .link-trace::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: 0.35rem;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    background: var(--vault-gold);
+    transition: transform 260ms ease;
+  }
+
+  .link-trace:hover::after {
+    transform: scaleX(1);
+  }
+
+  .glow-edge {
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--vault-gold), transparent 80%),
+      0 0 42px color-mix(in oklab, var(--vault-gold), transparent 84%);
+  }
+
+  .scroll-rail {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--vault-gold), transparent 45%),
+      color-mix(in oklab, var(--vault-cyan), transparent 60%),
+      transparent
+    );
+  }
+
   .hairline {
     background-image: linear-gradient(
       90deg,
@@ -124,8 +206,8 @@
 
   .vault-grid {
     background-image:
-      linear-gradient(color-mix(in oklab, white, transparent 94%) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklab, white, transparent 94%) 1px, transparent 1px);
+      linear-gradient(color-mix(in oklab, var(--foreground), transparent 93%) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--foreground), transparent 93%) 1px, transparent 1px);
     background-size: 88px 88px;
   }
 

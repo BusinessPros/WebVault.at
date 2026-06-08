@@ -11,11 +11,12 @@ import {
 } from "lucide-react";
 
 export const navItems = [
-  { label: "Leistungen", href: "#leistungen" },
-  { label: "Prozess", href: "#prozess" },
-  { label: "Pakete", href: "#pakete" },
-  { label: "Projekte", href: "#projekte" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Leistungen", href: "/leistungen" },
+  { label: "Prozess", href: "/prozess" },
+  { label: "Angebot", href: "/pakete" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Über uns", href: "/ueber-uns" },
+  { label: "Kontakt", href: "/kontakt" },
 ];
 
 export const stats = [
@@ -33,7 +34,7 @@ export const services = [
   {
     icon: Wand2,
     title: "Redesigns",
-    text: "Bestehende Websites werden klarer, schneller, wertiger und conversion-staerker.",
+    text: "Bestehende Websites werden klarer, schneller, wertiger und conversion-stärker.",
   },
   {
     icon: Bot,
@@ -55,7 +56,7 @@ export const services = [
 export const whyItems = [
   {
     icon: BriefcaseBusiness,
-    title: "Persoenlich statt anonym",
+    title: "Persönlich statt anonym",
     text: "Sie sprechen nicht mit einem Ticket-System, sondern mit Menschen, die Ihr Projekt wirklich verstehen.",
   },
   {
@@ -71,7 +72,37 @@ export const whyItems = [
   {
     icon: Sparkles,
     title: "Verkaufsorientiert",
-    text: "Die Website wird nicht nur schoen, sondern fuehrt Besucher gezielt zur Anfrage.",
+    text: "Die Website wird nicht nur schön, sondern führt Besucher gezielt zur Anfrage.",
+  },
+];
+
+export const aboutPrinciples = [
+  {
+    title: "Klarheit vor Effekt",
+    text: "Jede Animation, jedes Formular und jede Seite braucht einen Zweck: mehr Vertrauen, weniger Reibung, bessere Anfragen.",
+  },
+  {
+    title: "Technik, die mitwächst",
+    text: "Websites werden so aufgebaut, dass spätere Unterseiten, Automatisierungen und KI-Funktionen sauber ergänzt werden können.",
+  },
+  {
+    title: "Direkte Zusammenarbeit",
+    text: "Kurze Abstimmungen, klare Empfehlungen und ein Ablauf, der auch ohne internes Marketing-Team funktioniert.",
+  },
+];
+
+export const aboutOwners = [
+  {
+    name: "Bernhard Weinfurter",
+    role: "Beratung, Design & Marketing",
+    topics: ["Beratung", "Design", "Marketing"],
+    text: "Bernhard schärft Positionierung, Angebotslogik und visuelle Richtung. Sein Fokus liegt darauf, aus Ideen einen klaren Webauftritt zu formen, der professionell wirkt, Vertrauen aufbaut und Besucher ohne Umwege zur Anfrage führt.",
+  },
+  {
+    name: "Lukas Assfall",
+    role: "Technik, Design & Hosting",
+    topics: ["Technik", "Design", "Hosting"],
+    text: "Lukas sorgt für die technische Basis, schnelle Ladezeiten, saubere Umsetzung und stabile Veröffentlichung. Er verbindet Design-Verständnis mit Hosting, Struktur und Entwicklung, damit die Website nicht nur gut aussieht, sondern langfristig verlässlich arbeitet.",
   },
 ];
 
@@ -86,47 +117,92 @@ export const processSteps = [
 
 export const packages = [
   {
-    name: "Starter",
-    price: "ab 149 €/Monat",
-    alt: "oder ab 799 € einmalig",
-    text: "Für kleine Betriebe, Selbstständige und klare Onepager.",
-    items: ["Onepager oder bis 3 Seiten", "Individuelles Design", "Kontaktweg & CTA", "Hosting-Einrichtung"],
+    name: "Kompakter Start",
+    price: "Individuell abgestimmt",
+    alt: "Für klare erste Auftritte mit sauberem Anfrageweg.",
+    text: "Für kleine Betriebe, Selbstständige und Angebote, die schnell professionell online gehen sollen.",
+    items: ["Onepager oder kompakte Seitenstruktur", "Individuelles Design", "Kontaktweg & CTA", "Hosting-Einrichtung"],
   },
   {
-    name: "Business",
-    price: "ab 249 €/Monat",
-    alt: "oder ab 1.499 € einmalig",
-    text: "Für Dienstleister und lokale Unternehmen mit echtem Wachstumsziel.",
-    items: ["5-8 Seiten", "SEO-Basis", "Anfrageformular", "Wartung & Updates"],
+    name: "Wachstumsauftritt",
+    price: "Nach Umfang kalkuliert",
+    alt: "Für Unternehmen, die mehr Struktur, Sichtbarkeit und Vertrauen brauchen.",
+    text: "Für Dienstleister und lokale Unternehmen, die ihren Auftritt gezielt ausbauen wollen.",
+    items: ["Ausgebaute Seitenstruktur", "SEO-Basis", "Anfrageformular", "Wartung & Updates"],
     featured: true,
   },
   {
-    name: "Business + KI",
-    price: "ab 399 €/Monat",
-    alt: "Custom Setup möglich",
-    text: "Für Unternehmen, die Website, Chatbot und digitale Abläufe kombinieren.",
-    items: ["Alles aus Business", "KI-Chatbot", "Wissensbasis", "Automatisierte Lead-Erfassung"],
+    name: "Digitales System",
+    price: "Konzeptbasiert geplant",
+    alt: "Für Website, KI-Funktionen und digitale Abläufe aus einem Guss.",
+    text: "Für Unternehmen, die Website, Chatbot und wiederkehrende Prozesse miteinander verbinden wollen.",
+    items: ["Strategische Website-Struktur", "KI-Chatbot", "Wissensbasis", "Automatisierte Lead-Erfassung"],
   },
 ];
 
-export const cases = [
+export const portfolioProjects = [
   {
+    slug: "handwerk-premium",
+    title: "Handwerk Premium",
     type: "Handwerksbetrieb",
-    title: "Mehr qualifizierte Anfragen statt unklarer Telefonate.",
-    result: "+127%",
-    label: "Anfragequalität",
+    summary: "Klarer Auftritt für Leistungen, Vertrauen und schnelle Kontaktaufnahme.",
+    tags: ["Website", "Kontaktweg", "Lokale Sichtbarkeit"],
   },
   {
+    slug: "beratung-studio",
+    title: "Beratung Studio",
     type: "Dienstleister",
-    title: "Klarer Auftritt mit Premium-Wirkung und sauberem Angebotsfokus.",
-    result: "+86%",
-    label: "Sichtbarkeit",
+    summary: "Ruhige, hochwertige Struktur für Beratung, Angebote und Erstgespräche.",
+    tags: ["Positionierung", "Design", "Leadformular"],
   },
   {
-    type: "Organisation",
-    title: "Neue Struktur für Inhalte, Kontaktwege und wiederkehrende Fragen.",
-    result: "+63%",
-    label: "Zeitersparnis",
+    slug: "lokal-service",
+    title: "Lokal Service",
+    type: "Lokales Unternehmen",
+    summary: "Mobile-first Website für schnelle Orientierung und direkte Anfragen.",
+    tags: ["Mobile UX", "SEO-Basis", "Anfrage"],
+  },
+  {
+    slug: "ki-assist",
+    title: "KI Assist",
+    type: "Chatbot-System",
+    summary: "Website-Erweiterung mit FAQ-Fluss, Wissensbasis und Lead-Erfassung.",
+    tags: ["KI-Chatbot", "Automation", "Support"],
+  },
+  {
+    slug: "atelier-brand",
+    title: "Atelier Brand",
+    type: "Kreativstudio",
+    summary: "Visueller Portfolio-Auftritt mit starken Projektflächen und Kontaktfokus.",
+    tags: ["Portfolio", "Design", "Galerie"],
+  },
+  {
+    slug: "immobilien-portal",
+    title: "Immobilien Portal",
+    type: "Immobilien",
+    summary: "Strukturierte Präsentation für Objekte, Vertrauen und Beratungsgespräche.",
+    tags: ["Objekte", "Struktur", "Kontakt"],
+  },
+  {
+    slug: "fitness-concept",
+    title: "Fitness Concept",
+    type: "Studio",
+    summary: "Dynamischer Auftritt für Kurse, Mitgliedschaft und Probetraining.",
+    tags: ["Landingpage", "Conversion", "Mobile"],
+  },
+  {
+    slug: "gastro-reservierung",
+    title: "Gastro Reservierung",
+    type: "Gastronomie",
+    summary: "Atmosphärische Seite mit Menü, Reservierung und lokaler Auffindbarkeit.",
+    tags: ["Reservierung", "Menü", "Local SEO"],
+  },
+  {
+    slug: "academy-system",
+    title: "Academy System",
+    type: "Bildung",
+    summary: "Mehrseitige Struktur für Kurse, Inhalte und wiederkehrende Anfragen.",
+    tags: ["Mehrseiter", "Kurse", "Automation"],
   },
 ];
 
@@ -138,9 +214,24 @@ export const formGoals = [
   "Beratung",
 ];
 
+export const configuratorAddons = [
+  "SEO-Basis & lokale Sichtbarkeit",
+  "KI-Chatbot",
+  "Automatisierte Lead-Erfassung",
+  "Mehrsprachige Inhalte",
+  "Wartung & laufende Optimierung",
+];
+
+export const timelineOptions = [
+  "So schnell wie möglich",
+  "In 4-8 Wochen",
+  "In 2-3 Monaten",
+  "Ich möchte erst planen",
+];
+
 export const ctas = {
   primary: "Anfrage starten",
-  secondary: "Projekte ansehen",
+  secondary: "Portfolio ansehen",
 };
 
 export const headerHighlights = [

@@ -45,3 +45,5 @@ next-env.d.ts
 # local backup / QA folders
 /webvault/
 /webvault-qa/
+/.qa-screenshots/
+next-server*.log

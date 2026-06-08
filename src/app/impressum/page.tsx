@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function ImpressumPage() {
   return (
-    <main className="min-h-screen bg-vault-paper text-vault-ink">
-      <section className="section-shell py-20">
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="section-shell py-28">
         <Link href="/" className="text-sm font-medium hover:underline">
           Zurück zur Startseite
         </Link>
