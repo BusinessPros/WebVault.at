@@ -157,7 +157,7 @@ export function Configurator({ initialPackage }: ConfiguratorProps) {
               </label>
               <label className="grid gap-2 text-sm text-muted-foreground">
                 E-Mail
-                <Input name="email" type="email" autoComplete="email" className="h-12" placeholder="mail@unternehmen.de" />
+                <Input name="email" type="email" autoComplete="email" className="h-12" placeholder="mail@unternehmen.at" />
               </label>
             </div>
 

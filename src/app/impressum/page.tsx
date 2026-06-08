@@ -12,10 +12,10 @@ export default function ImpressumPage() {
         </h1>
         <div className="mt-10 max-w-2xl space-y-5 text-muted-foreground">
           <p>WebVault</p>
-          <p>Platzhalter für Name, Anschrift, Kontakt und rechtliche Angaben.</p>
+          <p>Die vollständigen Anbieterangaben werden vor Veröffentlichung ergänzt.</p>
           <p>
-            Diese Seite ist ein technischer Platzhalter und ersetzt keine
-            rechtliche Prüfung.
+            Diese Seite dient aktuell der technischen Vorbereitung und ersetzt keine
+            rechtliche Prüfung vor dem Livegang.
           </p>
         </div>
       </section>

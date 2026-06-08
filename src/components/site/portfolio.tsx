@@ -42,7 +42,7 @@ function MockupPlaceholder({
       <div className="absolute left-6 top-6 flex items-center gap-2">
         <span className="size-2 rounded-full bg-vault-gold" />
         <span className="font-mono text-[0.56rem] uppercase tracking-[0.22em] text-white/54">
-          Mockup {String(index + 1).padStart(2, "0")}
+          Konzept {String(index + 1).padStart(2, "0")}
         </span>
       </div>
       <p className="absolute bottom-24 left-6 max-w-[70%] text-2xl font-semibold tracking-[-0.03em]">
@@ -121,7 +121,7 @@ export function PortfolioGallery({ project }: { project: PortfolioProject }) {
           </Link>
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
             <Images aria-hidden className="size-4 text-vault-gold" />
-            Platzhalter-Galerie für Screenshots der Website
+            Galerie für Seitenansichten und Projektbereiche
           </div>
         </div>
 
@@ -131,11 +131,11 @@ export function PortfolioGallery({ project }: { project: PortfolioProject }) {
               <MockupPlaceholder label={`${project.title} · ${item}`} index={index} />
               <div className="px-2 py-4">
                 <p className="font-mono text-xs uppercase tracking-[0.22em] text-vault-line">
-                  Screenshot Platzhalter {String(index + 1).padStart(2, "0")}
+                  Seitenansicht {String(index + 1).padStart(2, "0")}
                 </p>
                 <h2 className="mt-2 text-xl font-semibold">{item}</h2>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  Hier kann später ein echter Screenshot oder ein Mockup der jeweiligen Seite eingefügt werden.
+                  Dieser Bereich zeigt, wie die jeweilige Seite strukturiert, erklärt und auf Anfragen ausgerichtet wird.
                 </p>
               </div>
             </Reveal>

@@ -241,3 +241,41 @@ export const headerHighlights = [
   "Digitale Systeme",
   "Conversion",
 ];
+
+export const workSteps = [
+  {
+    label: "01",
+    title: "Verstehen",
+    text: "Wir klären Zielgruppe, Angebot, Einwände und den Weg zur Anfrage, bevor Design oder Code entstehen.",
+  },
+  {
+    label: "02",
+    title: "Strukturieren",
+    text: "Aus Inhalten, Seitenlogik und Nutzerführung entsteht ein klarer Aufbau, der schnell Orientierung gibt.",
+  },
+  {
+    label: "03",
+    title: "Umsetzen",
+    text: "Design, Entwicklung, Animationen und technische Basis werden sauber verbunden und mobil geprüft.",
+  },
+  {
+    label: "04",
+    title: "Verbessern",
+    text: "Nach dem Launch bleiben Performance, Inhalte, Automatisierungen und Anfragewege gezielt ausbaubar.",
+  },
+];
+
+export const workTechnologies = [
+  { name: "HTML5", kind: "shield", bg: "#e34f26", fg: "#ffffff", short: "5" },
+  { name: "CSS3", kind: "shield", bg: "#1572b6", fg: "#ffffff", short: "3" },
+  { name: "JavaScript", kind: "square", bg: "#f7df1e", fg: "#111111", short: "JS" },
+  { name: "TypeScript", kind: "square", bg: "#3178c6", fg: "#ffffff", short: "TS" },
+  { name: "React", kind: "atom", bg: "#61dafb", fg: "#0b1320", short: "R" },
+  { name: "Next.js", kind: "word", bg: "#111111", fg: "#ffffff", short: "N" },
+  { name: "Tailwind CSS", kind: "waves", bg: "#38bdf8", fg: "#06202a", short: "TW" },
+  { name: "Node.js", kind: "hex", bg: "#5fa04e", fg: "#ffffff", short: "N" },
+  { name: "Three.js", kind: "triad", bg: "#111111", fg: "#ffffff", short: "3" },
+  { name: "Framer Motion", kind: "motion", bg: "#ff3366", fg: "#ffffff", short: "M" },
+  { name: "GitHub", kind: "github", bg: "#181717", fg: "#ffffff", short: "GH" },
+  { name: "Google Antigravity", kind: "antigravity", bg: "#ffffff", fg: "#202124", short: "AG" },
+];

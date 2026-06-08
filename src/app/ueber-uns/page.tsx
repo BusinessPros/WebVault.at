@@ -1,4 +1,9 @@
-import { AboutDetailedSection, ConfiguratorTeaser, PageHero } from "@/components/site/page-sections";
+import {
+  AboutDetailedSection,
+  ConfiguratorTeaser,
+  PageHero,
+  WorkMethodSection,
+} from "@/components/site/page-sections";
 
 export default function UeberUnsPage() {
   return (
@@ -10,6 +15,7 @@ export default function UeberUnsPage() {
         cta={{ label: "Projekt anfragen", href: "/konfigurator" }}
       />
       <AboutDetailedSection />
+      <WorkMethodSection />
       <ConfiguratorTeaser />
     </main>
   );

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "WebVault | Websites, Automatisierung & KI-Systeme",
   description:
     "WebVault baut hochwertige Websites, KI-Chatbots und digitale Systeme für Unternehmen, die online mehr Anfragen gewinnen wollen.",
-  metadataBase: new URL("https://webvault.local"),
+  metadataBase: new URL("https://webvault.at"),
 };
 
 export default function RootLayout({

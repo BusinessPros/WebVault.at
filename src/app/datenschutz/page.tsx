@@ -11,7 +11,7 @@ export default function DatenschutzPage() {
           Datenschutz
         </h1>
         <div className="mt-10 max-w-2xl space-y-5 text-muted-foreground">
-          <p>Platzhalter für Datenschutzhinweise.</p>
+          <p>Die Datenschutzhinweise werden vor Veröffentlichung vollständig ergänzt.</p>
           <p>
             Vor Veröffentlichung sollten Tracking, Kontaktformular,
             Hosting-Anbieter und eingesetzte Dienste rechtlich geprüft und hier

@@ -26,9 +26,11 @@ import {
   portfolioProjects,
   processSteps,
   services,
+  workSteps,
   whyItems,
 } from "@/data/site-content";
 import { cn } from "@/lib/utils";
+import { TechLogoMarquee } from "./marquee";
 import { Reveal } from "./reveal";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -139,12 +141,12 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
             ) : null}
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {services.map((service, index) => (
               <Reveal
                 key={service.title}
                 delay={index * 0.045}
-                className="interactive-card group min-h-56 p-5 sm:min-h-64 sm:p-6 xl:min-h-72"
+                className="interactive-card group min-h-56 p-5 sm:min-h-64 sm:p-6"
               >
                 <div className="relative">
                   <service.icon
@@ -320,8 +322,8 @@ export function ProjectsSection({ compact = false }: { compact?: boolean }) {
         <div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]">
           <SectionIntro
             eyebrow="Portfolio"
-            title="Platz für echte Projektgeschichten."
-            text="Diese Vorschau zeigt, wie bestehende Webprojekte später mit Mockup, Kurzbeschreibung und Galerie präsentiert werden."
+            title="Projektbeispiele mit klarem Fokus."
+            text="Die Beispiele zeigen typische WebVault-Strukturen: klare Einstiege, überzeugende Leistungsbereiche und Kontaktwege, die Besucher gezielt zur Anfrage führen."
           />
           <TraceLine className="self-end" />
         </div>
@@ -455,7 +457,7 @@ export function AboutDetailedSection() {
                           .join("")}
                       </p>
                       <p className="mt-3 font-mono text-[0.62rem] uppercase tracking-[0.24em] text-muted-foreground">
-                        Profilbild Platzhalter
+                        WebVault Profil
                       </p>
                     </div>
                   </div>
@@ -504,6 +506,59 @@ export function AboutDetailedSection() {
   );
 }
 
+export function WorkMethodSection() {
+  return (
+    <section className="relative overflow-hidden bg-vault-ink py-20 text-white sm:py-24">
+      <div className="absolute inset-0 vault-grid opacity-20" />
+      <div className="section-shell relative">
+        <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-end">
+          <SectionIntro
+            eyebrow="Wie wir arbeiten"
+            title="Strategie, Design und Code greifen ineinander."
+            text="Wir starten nicht mit beliebigen Effekten, sondern mit dem Weg, den ein Besucher verstehen soll. Daraus entstehen Struktur, Gestaltung und Technik, die zusammen auf mehr Vertrauen und bessere Anfragen einzahlen."
+            invert
+          />
+          <TraceLine className="hidden lg:block" />
+        </div>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {workSteps.map((step, index) => (
+            <Reveal
+              key={step.label}
+              delay={index * 0.06}
+              className="rounded-lg border border-white/12 bg-white/[0.045] p-5 backdrop-blur transition hover:border-vault-gold/45 sm:p-6"
+            >
+              <p className="font-mono text-xs text-vault-gold">{step.label}</p>
+              <h3 className="mt-8 text-2xl font-semibold tracking-[-0.02em]">
+                {step.title}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-white/62">{step.text}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="mt-12 overflow-hidden rounded-lg border border-white/12 bg-black/18 py-4 shadow-2xl shadow-black/20">
+          <div className="mb-4 flex flex-col gap-2 px-5 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.26em] text-vault-gold">
+                Tech-Stack
+              </p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-[-0.02em]">
+                Moderne Websprachen, Frameworks und Tools
+              </h3>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-white/58">
+              Von HTML, CSS, JavaScript und TypeScript bis React, Next.js, GitHub und Google Antigravity:
+              Wir wählen Werkzeuge nach Nutzen, Stabilität und sauberer Erweiterbarkeit.
+            </p>
+          </div>
+          <TechLogoMarquee />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 export function ContactSection() {
   return (
     <section className="relative overflow-hidden bg-vault-ink py-20 text-white sm:py-24">
@@ -523,15 +578,15 @@ export function ContactSection() {
             </p>
             <p className="flex items-center gap-3">
               <Mail aria-hidden className="size-4 text-vault-gold" />
-              hallo@webvault.de
+              hallo@webvault.at
             </p>
             <p className="flex items-center gap-3">
               <Phone aria-hidden className="size-4 text-vault-gold" />
-              +49 123 4567890
+              Telefon nach Vereinbarung
             </p>
             <p className="flex items-center gap-3">
               <MapPin aria-hidden className="size-4 text-vault-gold" />
-              Deutschland / Österreich
+              Österreich / DACH
             </p>
           </div>
         </div>
@@ -555,7 +610,7 @@ export function ContactSection() {
                   type="email"
                   autoComplete="email"
                   className="h-12 border-white/16 bg-black/22 text-white placeholder:text-white/32"
-                  placeholder="mail@unternehmen.de"
+                  placeholder="mail@unternehmen.at"
                 />
               </label>
             </div>

@@ -6,8 +6,8 @@ export default function PortfolioPage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Portfolio"
-        title="Bisherige Webprojekte als Galerie vorbereitet."
-        text="Hier entstehen die Referenzen von WebVault: neun Projektkacheln mit Mockup-Platzhaltern und eigenen Galerie-Seiten für Screenshots, Designstände und spätere Live-Eindrücke."
+        title="Webprojekte, die Struktur und Wirkung zeigen."
+        text="Unsere Beispiele zeigen, wie unterschiedliche Branchen digital klarer auftreten können: mit wertigem Design, verständlichen Inhalten und Kontaktwegen, die Anfragen leichter machen."
         cta={{ label: "Anfrage starten", href: "/konfigurator" }}
       />
       <PortfolioGrid />

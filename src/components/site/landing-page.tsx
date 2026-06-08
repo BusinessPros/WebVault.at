@@ -17,6 +17,7 @@ import {
   ServicesSection,
   WhySection,
 } from "./page-sections";
+import { InfiniteTextMarquee } from "./marquee";
 import { VaultScene } from "./vault-scene";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -114,15 +115,11 @@ export function LandingPage() {
             <VaultScene />
           </motion.div>
         </motion.div>
-        <div className="relative overflow-hidden border-y border-border bg-card/50 py-4 text-muted-foreground">
-          <div className="marquee-track gap-10 whitespace-nowrap font-mono text-xs uppercase tracking-[0.24em]">
-            {[...headerHighlights, ...headerHighlights, ...headerHighlights].map((item, index) => (
-              <span key={`${item}-${index}`} className="flex items-center gap-10">
-                {item}
-                <span className="size-1 rounded-full bg-vault-gold" />
-              </span>
-            ))}
-          </div>
+        <div className="relative border-y border-border bg-card/50 py-4 text-muted-foreground">
+          <InfiniteTextMarquee
+            items={headerHighlights}
+            className="font-mono text-xs uppercase tracking-[0.24em]"
+          />
         </div>
       </section>
 
