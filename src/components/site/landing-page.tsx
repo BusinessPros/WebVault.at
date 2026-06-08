@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -11,7 +12,6 @@ import {
   Phone,
   Play,
   ShieldCheck,
-  Vault,
 } from "lucide-react";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -45,8 +45,14 @@ export function LandingPage() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-vault-ink/72 text-white backdrop-blur-xl">
         <div className="section-shell flex h-16 items-center justify-between gap-4">
           <a href="#top" className="flex min-w-0 items-center gap-3 font-semibold">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-lg border border-vault-gold/25 bg-white/7 text-vault-gold">
-              <Vault aria-hidden className="size-4" />
+            <span className="flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-vault-gold/25 bg-white/7 text-vault-gold">
+              <Image
+                src="/webvault-logo.png"
+                alt=""
+                width={36}
+                height={36}
+                className="size-full object-cover"
+              />
             </span>
             <span className="truncate text-lg tracking-tight">WebVault</span>
           </a>
