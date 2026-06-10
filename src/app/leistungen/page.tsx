@@ -5,8 +5,8 @@ export default function LeistungenPage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Leistungen"
-        title="Alles, was aus Besuchern Anfragen macht."
-        text="Von der ersten Seitenstruktur bis zu KI-gestützten Anfragewegen: WebVault baut digitale Systeme, die professionell wirken und praktisch arbeiten."
+        title="Leistungen für mehr Anfragen."
+        text="Websites, Chatbots und Automatisierungen, die hochwertig wirken und im Alltag praktisch arbeiten."
         cta={{ label: "Leistung konfigurieren", href: "/konfigurator" }}
       />
       <ServicesSection compact />

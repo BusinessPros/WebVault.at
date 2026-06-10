@@ -6,8 +6,8 @@ export default function PortfolioPage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Portfolio"
-        title="Webprojekte, die Struktur und Wirkung zeigen."
-        text="Unsere Beispiele zeigen, wie unterschiedliche Branchen digital klarer auftreten können: mit wertigem Design, verständlichen Inhalten und Kontaktwegen, die Anfragen leichter machen."
+        title="Portfolio mit Projektgalerien."
+        text="Neun Projektkacheln mit Mockup-Platzhaltern und eigenen Galerien für spätere Screenshots."
         cta={{ label: "Anfrage starten", href: "/konfigurator" }}
       />
       <PortfolioGrid />

@@ -86,16 +86,16 @@ function SectionIntro({
 
 export function PageHero({ eyebrow, title, text, cta }: PageHeroProps) {
   return (
-    <section className="section-band pt-28 sm:pt-32">
+    <section className="section-band pt-24 sm:pt-28">
       <div className="absolute inset-0 vault-grid opacity-45" />
       <div className="absolute inset-x-0 bottom-0 h-px hairline" />
-      <div className="section-shell relative py-16 sm:py-20">
+      <div className="section-shell relative py-12 sm:py-16">
         <TraceLine className="mb-10 max-w-3xl" />
         <Reveal className="max-w-4xl">
           <p className="font-mono text-xs uppercase tracking-[0.32em] text-vault-gold">
             {eyebrow}
           </p>
-          <h1 className="mt-5 text-5xl font-semibold leading-[0.94] tracking-[-0.045em] sm:text-7xl lg:text-8xl">
+          <h1 className="mt-5 text-4xl font-semibold leading-[0.96] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
             {title}
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
@@ -127,7 +127,7 @@ export function ServicesSection({ compact = false }: { compact?: boolean }) {
           <div>
             <SectionIntro
               eyebrow="Leistungen"
-              title="Digitale Lösungen. Messbare Ergebnisse."
+              title="Digitale Lösungen."
               text="Websites, Chatbots und Automatisierungen greifen sauber ineinander, damit Besucher schneller verstehen, vertrauen und anfragen."
             />
             {!compact ? (
@@ -211,7 +211,7 @@ export function ProcessSection({ compact = false }: { compact?: boolean }) {
         <div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]">
           <SectionIntro
             eyebrow="Prozess"
-            title="Strukturiert. Klar. Erfolgreich."
+            title="Klarer Prozess."
             text="Vom ersten Gespräch bis zur laufenden Betreuung bleibt der Ablauf transparent. Sie wissen immer, was passiert und warum."
           />
           <TraceLine className="self-end" />
@@ -254,7 +254,7 @@ export function PackagesSection({ compact = false }: { compact?: boolean }) {
       <div className="section-shell relative grid gap-12 lg:grid-cols-[0.52fr_1.48fr]">
         <SectionIntro
           eyebrow="Angebot"
-          title="Flexible Projektwege statt starre Schubladen."
+          title="Flexible Projektwege."
           text="Wir starten mit einem passenden Rahmen und verfeinern Umfang, Betreuung und technische Tiefe erst nach dem Blick auf Ihr Ziel."
           invert
         />
@@ -376,7 +376,7 @@ export function AboutSection() {
         <div>
           <SectionIntro
             eyebrow="Über uns"
-            title="Websites mit Substanz statt nur Oberfläche."
+            title="Websites mit Substanz."
             text="WebVault verbindet Design, saubere Technik und Anfrage-Logik für Unternehmen, die online ernster genommen werden wollen."
           />
           <div className="mt-8 grid grid-cols-2 gap-3 text-sm sm:max-w-md">
@@ -416,7 +416,7 @@ export function AboutDetailedSection() {
               Wer hinter WebVault steht
             </p>
             <h2 className="mt-4 text-4xl font-semibold leading-[1] tracking-[-0.035em] sm:text-5xl">
-              Zwei Gründer, ein Ziel: digitale Auftritte, die sauber wirken und praktisch verkaufen.
+              Zwei Gründer. Ein klares Ziel.
             </h2>
             <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
               <p>
@@ -491,7 +491,7 @@ export function AboutDetailedSection() {
                 Zusammenarbeit
               </p>
               <h3 className="mt-3 text-3xl font-semibold tracking-[-0.03em]">
-                Strategie und Umsetzung bleiben bei denselben Ansprechpartnern.
+                Strategie und Umsetzung bleiben nah beieinander.
               </h3>
               <p className="mt-4 max-w-3xl text-sm leading-7 text-vault-ink/72">
                 Dadurch gehen Informationen nicht zwischen Beratung, Design und Entwicklung verloren.
@@ -514,7 +514,7 @@ export function WorkMethodSection() {
         <div className="grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-end">
           <SectionIntro
             eyebrow="Wie wir arbeiten"
-            title="Strategie, Design und Code greifen ineinander."
+            title="Ein Ablauf, der zusammenhält."
             text="Wir starten nicht mit beliebigen Effekten, sondern mit dem Weg, den ein Besucher verstehen soll. Daraus entstehen Struktur, Gestaltung und Technik, die zusammen auf mehr Vertrauen und bessere Anfragen einzahlen."
             invert
           />
@@ -685,7 +685,7 @@ export function ConfiguratorTeaser() {
                 Konfigurator
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-                Wählen Sie Ziel, Umfang und Tempo in wenigen Schritten.
+                Ziel, Umfang und Tempo in wenigen Schritten.
               </h2>
             </div>
             <Link href="/konfigurator" className={cn(buttonVariants({ variant: "default" }), "h-12 bg-vault-ink px-5 text-vault-gold hover:bg-white")}>

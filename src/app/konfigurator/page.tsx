@@ -9,8 +9,8 @@ export default async function KonfiguratorPage({ searchParams }: PageProps<"/kon
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Konfigurator"
-        title="Starten Sie mit dem passenden Projektweg."
-        text="Wählen Sie Ziel, Umfang, Extras und Zeithorizont. Daraus entsteht eine klare Anfrage, die wir schnell einschätzen können."
+        title="Projektweg starten."
+        text="Wählen Sie Ziel, Umfang, Extras und Tempo. Daraus entsteht eine Anfrage, die wir schnell einschätzen können."
       />
       <Configurator initialPackage={packageParam} />
     </main>

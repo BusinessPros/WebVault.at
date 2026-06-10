@@ -5,8 +5,8 @@ export default function ProzessPage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Prozess"
-        title="Ein klarer Weg vom Erstgespräch bis Launch."
-        text="Jede Phase hat ein Ziel: Entscheidungen vereinfachen, Risiken früh erkennen und den Weg zur Anfrage logisch aufbauen."
+        title="Vom Erstgespräch bis Launch."
+        text="Ein klarer Ablauf, der Entscheidungen vereinfacht und den Anfrageweg logisch aufbaut."
         cta={{ label: "Anfrage starten", href: "/konfigurator" }}
       />
       <ProcessSection compact />

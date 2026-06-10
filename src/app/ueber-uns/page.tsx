@@ -10,8 +10,8 @@ export default function UeberUnsPage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Über uns"
-        title="WebVault verbindet Beratung, Design und Technik."
-        text="Hinter WebVault stehen Bernhard Weinfurter und Lukas Assfall. Gemeinsam entwickeln sie hochwertige Websites und digitale Systeme, die Unternehmen professioneller sichtbar machen und Anfragen klarer führen."
+        title="Beratung, Design und Technik."
+        text="Bernhard Weinfurter und Lukas Assfall entwickeln Websites und digitale Systeme, die professionell sichtbar machen und Anfragen klarer führen."
         cta={{ label: "Projekt anfragen", href: "/konfigurator" }}
       />
       <AboutDetailedSection />

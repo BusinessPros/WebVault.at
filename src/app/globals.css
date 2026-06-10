@@ -94,6 +94,12 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
   html {
@@ -103,9 +109,11 @@
 
   body {
     @apply bg-background text-foreground;
+    margin: 0;
     min-height: 100vh;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
     text-rendering: geometricPrecision;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -116,7 +124,7 @@
 
 @layer components {
   .section-shell {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full px-4 sm:px-5 lg:px-6;
   }
 
   .section-band {

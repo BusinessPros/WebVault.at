@@ -5,8 +5,8 @@ export default function PaketePage() {
     <main className="bg-background text-foreground">
       <PageHero
         eyebrow="Angebot"
-        title="Individuelle Projektwege für klare Entscheidungen."
-        text="Wählen Sie einen Startpunkt, ergänzen Sie Extras und verfeinern Sie den Umfang im Konfigurator."
+        title="Individuelle Projektwege."
+        text="Wählen Sie einen Startpunkt und verfeinern Sie Umfang, Extras und Tempo im Konfigurator."
         cta={{ label: "Projektweg wählen", href: "/konfigurator" }}
       />
       <PackagesSection compact />
