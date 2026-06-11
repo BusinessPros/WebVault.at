@@ -11,8 +11,6 @@ type RevealProps = {
   as?: "div" | "section" | "article" | "li";
 };
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export function Reveal({
   children,
   delay = 0,
@@ -34,12 +32,8 @@ export function Reveal({
     <Component
       ref={ref}
       style={{ y, scale, opacity }}
-      initial={{ filter: "blur(8px)" }}
-      whileInView={{
-        filter: "blur(0px)",
-      }}
       viewport={{ once: true, amount: 0.18, margin: "0px 0px -12% 0px" }}
-      transition={{ duration: 0.75, ease, delay }}
+      transition={{ delay }}
       className={className}
       {...props}
     >

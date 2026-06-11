@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: Arial, Helvetica, sans-serif;
-  --font-mono: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-  --font-heading: Arial, Helvetica, sans-serif;
+  --font-sans: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", "Cascadia Code", Consolas, monospace;
+  --font-heading: "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -111,9 +111,27 @@
     @apply bg-background text-foreground;
     margin: 0;
     min-height: 100vh;
+    font-family: var(--font-sans);
+    font-weight: 400;
     font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: geometricPrecision;
     overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
+
+  strong,
+  b {
+    font-weight: 700;
   }
 
   ::selection {
@@ -203,6 +221,31 @@
     );
   }
 
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: color-mix(in oklab, var(--foreground), transparent 92%);
+  }
+
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--vault-gold), transparent 78%),
+      transparent
+    );
+    animation: skeleton-shimmer 1.35s ease-in-out infinite;
+  }
+
+  .skeleton-soft {
+    background: color-mix(in oklab, var(--foreground), transparent 95%);
+  }
+
   .hairline {
     background-image: linear-gradient(
       90deg,
@@ -285,6 +328,12 @@
   }
 }
 
+@keyframes skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;
@@ -292,5 +341,9 @@
 
   .marquee-track {
     animation-duration: 46s;
+  }
+
+  .skeleton::after {
+    animation: none;
   }
 }

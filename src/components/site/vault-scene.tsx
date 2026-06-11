@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
 export function VaultScene() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const readyRef = useRef(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -167,12 +169,17 @@ export function VaultScene() {
       glass.position.y = 0.1 + Math.sin(frame * 1.4) * 0.035;
       wire.position.y = glass.position.y;
       renderer.render(scene, camera);
+      if (!readyRef.current) {
+        readyRef.current = true;
+        setReady(true);
+      }
       raf = window.requestAnimationFrame(animate);
     };
     animate();
 
     return () => {
       window.cancelAnimationFrame(raf);
+      readyRef.current = false;
       window.removeEventListener("pointermove", handlePointer);
       observer.disconnect();
       renderer.dispose();
@@ -194,9 +201,24 @@ export function VaultScene() {
     <div className="relative min-h-[320px] overflow-hidden rounded-[0.75rem] border border-white/15 bg-[#080909] shadow-2xl shadow-black/45 sm:min-h-[420px] lg:min-h-[600px]">
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 size-full"
+        className={`absolute inset-0 size-full transition-opacity duration-500 ${ready ? "opacity-100" : "opacity-0"}`}
         aria-label="Interaktive WebVault Systemvisualisierung"
       />
+      {!ready ? (
+        <div className="absolute inset-0 p-5 sm:p-8" aria-hidden>
+          <div className="skeleton h-full rounded-lg bg-white/[0.06]" />
+          <div className="absolute left-8 top-8 w-[58%] rounded-lg border border-white/12 bg-black/25 p-4 sm:left-12 sm:top-12">
+            <div className="skeleton h-3 w-32 bg-white/10" />
+            <div className="mt-8 skeleton h-9 w-10/12 bg-white/10" />
+            <div className="mt-3 skeleton h-9 w-8/12 bg-white/10" />
+            <div className="mt-8 grid grid-cols-3 gap-2">
+              <div className="skeleton h-10 bg-white/10" />
+              <div className="skeleton h-10 bg-white/10" />
+              <div className="skeleton h-10 bg-white/10" />
+            </div>
+          </div>
+        </div>
+      ) : null}
       <div className="pointer-events-none absolute inset-0 vault-grid opacity-50" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(238,203,142,0.26),transparent_28%),radial-gradient(circle_at_10%_80%,rgba(103,212,238,0.14),transparent_25%)]" />
       <div className="absolute left-4 top-4 w-[74%] rounded-lg border border-white/14 bg-black/35 p-3 text-white shadow-2xl backdrop-blur-md sm:left-8 sm:top-8 sm:w-[58%] sm:p-5">
